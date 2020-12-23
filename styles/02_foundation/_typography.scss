@@ -1,0 +1,56 @@
+h1, .logo, .nav-link, .outline-link{
+    font-family: 'Staatliches';
+}
+body{
+    font-family: 'Montserrat';
+}
+label{
+    font-family: 'Bungee Hairline';
+}
+input{
+    font-family: 'Bungee';
+}
+.nav-link:hover, .nav-link.active{
+    font-family: 'Lacquer';
+    text-transform: capitalize;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo{
+    font-size: 40px;
+    line-height: 50px;
+    @media screen and (min-width: 992px){
+        font-size: 45px;
+        line-height: 57px;
+        &:hover{
+            color: $grey;
+        }
+    }
+}
+.circle-letter{
+    font-size: 15px;
+    text-transform: uppercase;
+    font-family: 'Staatliches';
+    color: $grey;
+    @media screen and (min-width: 768px) {
+        font-size: 20px;
+    }
+    @media screen and (min-width: 992px) {
+        font-size: 30px;
+    }
+}
+
+h1, .logo, .nav-link{
+    color: $darkgrey;
+}
+.nav-link{
+    font-size: 18.54px;
+    line-height: 24px;
+    @media screen and (min-width: 768px){
+        font-size: 30px;
+        line-height: 37px;
+    }
+}
