@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import {useRouter} from 'next/router'
 import {TweenMax} from 'gsap'
 import {useEffect, useState, useRef} from 'react'
 import {Navbar} from '../components/nav/Navbar'
@@ -6,22 +7,22 @@ import {Navbar} from '../components/nav/Navbar'
 
 export default function Home() {
   let app, bar, james, todd, block1, block2, box, content, nav, watermark = useRef(null)
-
+  const router = useRouter()
   //========================================================
   // EXIT ANIMATION
   const [clicked, setClicked] = useState(undefined)
   useEffect(()=>{
     if(!clicked) return
     //play exit animation
-    TweenMax.to(nav, 0.25, {css: {translateY: "100px", opacity: "0"}})
+    // TweenMax.to(nav, 0.25, {css: {translateY: "100px", opacity: "0"}})
     TweenMax.to(content, 0.85, {css: {scale: "10"}})
     TweenMax.to(watermark, 0.25, {css: {translateX: "100px", opacity: "0"}})
     TweenMax.to(box, 0.25, {css: {height: "0px"}}).delay(0.25)
     //send browser to clicked link
     setTimeout(()=>{
-      window.location.href= `/${clicked}`
+      router.push(`/${clicked}`)
       setClicked(undefined)
-    }, 800)
+    }, 750)
   },[clicked])
   //========================================================
 
@@ -58,7 +59,7 @@ export default function Home() {
 
 
   //=======================================================
-  // INTRO ANIMATION
+  // ENTER ANIMATION
   useEffect(()=>{
     //  MAKE APP VISIBLE
     TweenMax.to(app, 0, {css: {visibility: 'visible'}})
@@ -95,7 +96,7 @@ export default function Home() {
   return (
     <div className="wrapper" ref={el=> app = el}>
       <Head>
-        <title>James Todd</title>
+        <title>Welcome - James Todd</title>
       </Head>
       <div className="nav-wrap" ref={el=> nav = el}>
         <Navbar setClicked={setClicked}/>

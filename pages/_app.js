@@ -8,6 +8,11 @@ function MyApp({ Component, pageProps }) {
         <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Hairline&family=Lacquer&family=Montserrat&family=Staatliches&display=swap" rel="stylesheet"/>
       </Head>
       <Component {...pageProps} />
+      <style global jsx>{`
+        div#__next{
+          height: 100vh;
+        }
+      `}</style>
     </>
   ) 
 }

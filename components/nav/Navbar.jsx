@@ -25,7 +25,7 @@ export const Navbar = ({setClicked}) => {
                 </div>
                 <nav className={open ? "open" : null}>
                     <a href="/about" className="nav-link" data-id="about" onClick={e=> handleLink(e)}>about</a>
-                    <a href="/portfolio" className="nav-link" data-id="portfolio" onClick={e=> handleLink(e)}>portfolio</a>
+                    <a href="/work" className="nav-link" data-id="work" onClick={e=> handleLink(e)}>work</a>
                     <a href="/contact" className="nav-link" data-id="contact" onClick={e=> handleLink(e)}>contact</a>
                 </nav>
             </header>

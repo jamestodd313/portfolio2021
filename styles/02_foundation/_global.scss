@@ -3,4 +3,8 @@ html, body{
 }
 *{
     box-sizing: border-box;
+    &::selection{
+        background: greenyellow;
+        color: black;
+    }
 }
