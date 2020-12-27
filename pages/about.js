@@ -42,7 +42,6 @@ export default function about(){
     useEffect(()=>{
         let enterTl = gsap.timeline()
         enterTl
-            .set(nav, {translateY: "0px", visibility: "visible"})
             .from(container, {width: "0px", duration: 1})
             .to(content, {opacity: "1", duration: 0.2})
             .from(circles, {scale: 0, bottom: 0, duration: 0.5, delay: -0.25, stagger: 0.1})
@@ -148,7 +147,7 @@ export default function about(){
     return(
         <>
             <Head><title>About - James Todd</title></Head>
-            <div className="nav-wrap" ref={el=> nav = el}><Navbar setClicked={setClicked}/></div>
+            <Navbar setClicked={setClicked}/>
             <div className="about-container" ref={el=> container = el}>
                 <div className="about-inner" ref={el=> content = el}>
                     {skills.map(skill=> <div className={`skill ${skill.size} ${skill.name}-circle`} key={Math.random()} style={{top: skill.top, left: skill.left}}>{skill.name}</div>)}
