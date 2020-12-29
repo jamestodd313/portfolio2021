@@ -1,10 +1,4 @@
-import React, { useEffect, useState } from 'react'
-
 export const ProjectImage = ({project, setSelectedProject, isExpanded}) => {
-    const [expanded, setExpanded] = useState(false)
-    useEffect(()=>{
-        if(isExpanded) setExpanded(true)
-    },[])
     function handleHover(e){
         let thumbos = document.querySelectorAll('.project-thumbnail-wrapper')
         thumbos.forEach(thumbnail=>{
@@ -15,18 +9,14 @@ export const ProjectImage = ({project, setSelectedProject, isExpanded}) => {
         let thumbos = document.querySelectorAll('.project-thumbnail-wrapper')
         thumbos.forEach(thumbnail=> thumbnail.classList.remove('small'))
     }
+    function handleClick(e){
+        if(isExpanded) return
+        setSelectedProject(e.currentTarget)
+    }
     return (
-        <div className={`project-thumbnail-wrapper ${expanded ? 'expanded' : ''}`} id={`project-${project.id}`} onMouseOver={e=> handleHover(e)} onMouseLeave={unHover} onClick={e=> setSelectedProject(e.currentTarget)}>
+        <div className={`project-thumbnail-wrapper ${isExpanded ? 'expanded' : ''}`} id={project.slug} onMouseOver={e=> handleHover(e)} onMouseLeave={unHover} onClick={e=> handleClick(e)}>
             <img src={'/images/project-placeholder-01.jpg'} className="project-thumbnail"/>
-            <span className="project-thumbnail-title">{project.name}</span>
+            <span className="project-thumbnail-title">{project.title}</span>
         </div>
     )
 }
-
-
-// on click, setSelectedProject as e.currentTarget
-// in the index page, have an effect that fire on selectedProject change
-// have the effect trigger a gsap animation. something like this:
-// for each thumbnail if the thumbnail === selectedProject, add the 'expanded' class to the selected project
-// otherwise remove the unselected thumbnail from the dom
-// after animations are done, router.push(/project-name)

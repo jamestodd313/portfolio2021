@@ -36,10 +36,11 @@ export default function Home() {
   },[])
   useEffect(()=>{
     const lets = document.querySelectorAll('.circle-letter')
+    let degreesToRotate = 360 / lets.length
     let i = 0
     lets.forEach(letter=>{
       letter.style.transform = `rotate(${i}deg)`
-      i = i + 5.07042253521
+      i = i + degreesToRotate
     })
   },[letters])
   //=======================================================
@@ -61,10 +62,11 @@ export default function Home() {
   //=======================================================
   // ENTER ANIMATION
   useEffect(()=>{
+    let marg = window.innerWidth > 992 ? "280px" : "64px"
     //  MAKE APP VISIBLE
     TweenMax.to(app, 0, {css: {visibility: 'visible'}})
     //  LOADING BAR GROW
-    TweenMax.to(bar, 0.75, {css: {width: "calc(100vw - 80px)"}})
+    TweenMax.to(bar, 0.75, {css: {width: `calc(100vw - ${marg})`}})
     //  JAMES TODD TEXT COMES IN
     TweenMax.to(james, 0.5, {css: {translateY: "-90%"}}).delay(0.85)
     TweenMax.to(todd, 0.5, {css: {translateY: "90%"}}).delay(0.85)

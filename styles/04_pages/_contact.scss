@@ -1,0 +1,81 @@
+.contact-container{
+    min-height: 70vh;
+    // margin-bottom: 5vh;
+    width: 100vw;
+    background: $lightgrey;
+    padding: 0px 32px;
+    h1{
+        margin: 0px 0px 32px 0px;
+    }
+    label, input, textarea{
+        display: block;
+        width: 100%;
+    }
+    label{
+        font-size: 17.28px;
+        margin-bottom: 7px;
+    }
+    input[type=text], textarea{
+        margin-bottom: 48px;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid $grey;
+        font-size: 17.31px;
+        padding-left: 12px;
+        color: $darkgrey;
+        &::placeholder{
+            font-size: 18px;
+            font-family: 'Montserrat';
+            font-weight: bold;
+            color: transparent;
+            -webkit-text-stroke: 1px $darkgrey;
+        }
+        &:focus{
+            border-bottom: 1px solid black;
+            outline-color: cadetblue;
+        }  
+        &:last-of-type{
+            margin-bottom: 16px;
+        }
+    }
+    textarea{
+        height: 200px;
+        font-size: 28px;
+    }
+    input[type=submit]{
+        border: none;
+        background: none;
+    }
+
+    @media screen and (min-width: 992px){
+        padding: 48px 122px;
+        width: calc(100vw - 280px);
+        margin-left: 140px;
+        input[type=text]{
+            font-size: 28px;
+        }
+        input[type=submit]{
+            width: auto;
+            font-size: 51.6px;
+        }
+    }
+}
+.links{
+    width: calc(100vw - 64px);
+    margin: 16px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    a{
+        font-size: 51.6px;
+        margin: 16px;
+    }
+    @media screen and (min-width: 768px){
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    @media screen and (min-width: 992px){
+        width: calc(100vw - 280px);
+        margin-left: 140px;
+    }
+}

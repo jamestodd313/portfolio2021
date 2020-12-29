@@ -4,11 +4,19 @@ h1, .logo, .nav-link, .outline-link{
 body{
     font-family: 'Montserrat';
 }
+p{
+    font-size: 12px;
+    line-height: calc(12px * 1.618);
+}
 label{
     font-family: 'Bungee Hairline';
 }
-input{
+input[type=text]{
     font-family: 'Bungee';
+}
+textarea{
+    font-family: "Bungee";
+    font-size: 28px;
 }
 .nav-link:hover, .nav-link.active{
     font-family: 'Lacquer';
@@ -46,11 +54,37 @@ a{
 h1, .logo, .nav-link{
     color: $darkgrey;
 }
+h1{
+    font-size: 61.92px;
+    line-height: 61.92px * 1.618;
+}
 .nav-link{
     font-size: 18.54px;
     line-height: 24px;
     @media screen and (min-width: 768px){
         font-size: 30px;
         line-height: 37px;
+    }
+}
+
+// the big link/button that changes to outline on hover
+.big-link{
+    cursor: pointer;
+    font-family: "Staatliches";
+    font-size: 30px;
+    line-height: calc(30px * 1.618);
+    color: $darkgrey;
+    // width: 75px;
+    transition: 0.2s;
+    &:hover{
+        color: transparent;
+        -webkit-text-stroke: 1px $grey;
+    }
+    &.reverse{
+        color: transparent;
+        -webkit-text-stroke: 1px $grey;
+        &:hover{
+            color: $darkgrey;
+        }
     }
 }

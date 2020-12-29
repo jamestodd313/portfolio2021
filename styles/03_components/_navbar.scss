@@ -27,18 +27,24 @@ header{
         display: flex;
         justify-content: space-between;
         overflow: hidden;
-        // transform: translateY(-75px);
         margin-top: -75px;
         pointer-events: none;
         opacity:0;
         transition: 0.2s;
         &.open{
             height: unset;
-            // transform: translateY(0px);
             margin-top: 0;
             opacity: 1;
             pointer-events: all;
             height: unset;
+        }
+        .nav-link::before{
+            content: attr(data-id);
+            display: block;
+            font-family: 'Lacquer';
+            text-transform: capitalize;
+            height: 0px;
+            visibility: hidden;
         }
     }
 
@@ -70,14 +76,6 @@ header{
         nav{
             .nav-link{
                 margin-left: 53px;
-                &::before{
-                    content: attr(data-id);
-                    display: block;
-                    font-family: 'Lacquer';
-                    text-transform: capitalize;
-                    height: 0px;
-                    visibility: hidden;
-                }
             }
         }
     }

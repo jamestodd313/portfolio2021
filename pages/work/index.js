@@ -7,20 +7,13 @@ export default function index({projects}){
    
     // ENTER ANIMATION
     useEffect(()=>{
-        let project = document.querySelectorAll('.project-thumbnail-wrapper')
         let container = document.querySelectorAll('.projects-container')[0]
         const enterTl = gsap.timeline()
         enterTl
             .from(container, {width: 0})
-            // .from(project[0], {width: 0, transition: 0})
-            // .from(project[1], {height: 0, transition: 0, delay: -0.5})
-            // .from(project[2], {width: 0, transition: 0, delay: -0.5})
-            // .from(project[3], {height: 0, transition: 0, delay: -0.5})
-        setTimeout(()=>{enterTl.kill()}, 1000)
     },[])
 
     // OPEN PROJECT ANIMATION
-    projects = [{name: "porject nam", id: "01"}, {name: "porject nam", id: "02"}, {name: "porject nam", id:"03"}, {name: "porject nam", id:"04"}, ]
     const [selectedProject, setSelectedProject] = useState(undefined)
     useEffect(()=>{
         if(!selectedProject) return
@@ -28,26 +21,25 @@ export default function index({projects}){
         document.querySelectorAll('.project-thumbnail-wrapper').forEach(img=>{
             if(img !== selectedProject) unselected.push(img)
         })
-        unselected.forEach(img=> img.style.opacity = 0)
         setTimeout(()=>{
             unselected.forEach(img=> img.style.display = 'none')
         }, 50)
 
+
         let transitionTl = gsap.timeline({defaults: {ease: "bounce"}})
         transitionTl
-        .add(()=>{ selectedProject.onClick = null})
-        // .to(selectedProject, {translateY: "-18%", translateX: "-11%", duration: 0.2})
-        // .to(selectedProject, {minWidth: "100vw", height: "80vh", duration: 0.2})
-        // .to(selectedProject.firstChild, {width: "100vw", duration: 0.2})
-
-            .to(selectedProject, {position: "fixed", zIndex: 0})
+            .to(selectedProject, {position: "fixed", zIndex: -10, duration: 0})
             .to(selectedProject, {top: 0, left:0, duration: 0.3, minWidth: "100vw", height: "80vh", objectFit: "cover", objectPosition: "center"})
             .to(selectedProject.firstChild, {width: "100vw"})
+            .add(()=>{ 
+                selectedProject.onClick = null
+                selectedProject.classList.add('expanded')
+            })
         setTimeout(()=>{ router.push(`/work/${selectedProject.id}`)}, 1500)
     },[selectedProject])
 
+
     // EXIT ANIMATION
-    
     const router = useRouter()
     const [clicked, setClicked] = useState(undefined)
     useEffect(()=>{
@@ -74,6 +66,31 @@ export default function index({projects}){
 }
 
 index.getInitialProps = async(ctx)=> {
-    let projects
+    let projects = [
+        {
+            id: "01",
+            title: "Project One",
+            images: {},
+            slug: "project-one-slug",
+        },
+        {
+            id: "02",
+            title: "Project Two",
+            images: {},
+            slug: "project-two-slug",
+        },
+        {
+            id: "03",
+            title: "Project three",
+            images: {},
+            slug: "project-three-slug",
+        },
+        {
+            id: "04",
+            title: "Project four",
+            images: {},
+            slug: "project-four-slug",
+        },
+    ]
     return {projects}
 }

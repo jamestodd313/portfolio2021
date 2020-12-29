@@ -2,11 +2,14 @@
 .loader{
     position:fixed;
     top: 50%;
-    left: 40px;
+    left: 32px;
     min-height: 5px;
     min-width: 4px;
     border: 0.5px solid $grey;
     z-index:10;
+    @media screen and (min-width: 992px){
+        left: 140px;
+    }
 }
 .block1, .block2{
     background: white;
