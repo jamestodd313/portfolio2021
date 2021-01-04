@@ -5,47 +5,9 @@ import {useEffect, useState, useRef} from 'react'
 import {Navbar} from '../components/nav/Navbar'
 
 
-export default function Home() {
+export default function Home({pageData}) {
   let app, bar, james, todd, block1, block2, box, content, nav, watermark = useRef(null)
   const router = useRouter()
-  //========================================================
-  // EXIT ANIMATION
-  const [clicked, setClicked] = useState(undefined)
-  useEffect(()=>{
-    if(!clicked) return
-    //play exit animation
-    // TweenMax.to(nav, 0.25, {css: {translateY: "100px", opacity: "0"}})
-    TweenMax.to(content, 0.85, {css: {scale: "10"}})
-    TweenMax.to(watermark, 0.25, {css: {translateX: "100px", opacity: "0"}})
-    TweenMax.to(box, 0.25, {css: {height: "0px"}}).delay(0.25)
-    //send browser to clicked link
-    setTimeout(()=>{
-      router.push(`/${clicked}`)
-      setClicked(undefined)
-    }, 750)
-  },[clicked])
-  //========================================================
-
-
-  //========================================================
-  // CIRCLE TEXT STUFF 
-  const [letters, setLetters] = useState([])
-  useEffect(()=>{
-    let str = "james todd•minneapolis•full stack web developer•mern•gsap•i need a job•"
-    setLetters(str.split(""))
-  },[])
-  useEffect(()=>{
-    const lets = document.querySelectorAll('.circle-letter')
-    let degreesToRotate = 360 / lets.length
-    let i = 0
-    lets.forEach(letter=>{
-      letter.style.transform = `rotate(${i}deg)`
-      i = i + degreesToRotate
-    })
-  },[letters])
-  //=======================================================
-
-
   //=======================================================
   // INTRO TEXT
   const [firstTxt, setFirstTxt] = useState('JAMES')
@@ -56,8 +18,6 @@ export default function Home() {
       setLastTxt('T')
     } 
   },[])
-  //=======================================================
-
 
   //=======================================================
   // ENTER ANIMATION
@@ -82,23 +42,58 @@ export default function Home() {
     TweenMax.to(todd, 0.5, {css: {translateX: "-150vw"}}).delay(2.3)
 
 
-// PAGE BOX COMES IN
+  // PAGE BOX COMES IN
     TweenMax.from(box, 0.6, {css: {height: "1px", marginTop: "50vh"}}).delay(2.5)
     TweenMax.to(box, 1, {css: {visibility: "visible"}}).delay(2.5)
-// MENU SLIDES UP
-    TweenMax.to(nav, 0.75, {css: {visibility: "visible", translateY: "0", zIndex: "0"}}).delay(3.2)
-    TweenMax.from(watermark, 0.75, {css: {left: "100px", opacity: "0"}}).delay(3.2)
-// CIRCLE TEXT COMES IN
+  // MENU SLIDES UP
+    TweenMax.to(nav, 0.75, {css: {visibility: "visible", translateY: "0", zIndex: "0"}}).delay(2.6)
+    TweenMax.from(watermark, 0.75, {css: {left: "100px", opacity: "0"}}).delay(2.6)
+  // CIRCLE TEXT COMES IN
     TweenMax.to(content, 0.5, {css: {visibility: "visible", opacity: 1}}).delay(3.6)
   },[app])
-  //=======================================================
+
+
+  //========================================================
+  // EXIT ANIMATION
+  const [clicked, setClicked] = useState(undefined)
+  useEffect(()=>{
+    if(!clicked) return
+    //play exit animation
+    // TweenMax.to(nav, 0.25, {css: {translateY: "100px", opacity: "0"}})
+    TweenMax.to(content, 0.6, {css: {scale: "10", ease: "back"}},)
+    TweenMax.to(watermark, 0.25, {css: {translateX: "100px", opacity: "0"}})
+    TweenMax.to(box, 0.25, {css: {height: "0px"}}).delay(0.25)
+    //send browser to clicked link
+    setTimeout(()=>{
+      router.push(`/${clicked}`)
+      setClicked(undefined)
+    }, 750)
+  },[clicked])
+
+
+  //========================================================
+  // CIRCLE TEXT STUFF 
+  const [letters, setLetters] = useState([])
+  useEffect(()=>{
+    // let str = "james todd•minneapolis•full stack web developer•mern•gsap•i need a job•"
+    setLetters(pageData.circleText.split(""))
+  },[])
+  useEffect(()=>{
+    const lets = document.querySelectorAll('.circle-letter')
+    let degreesToRotate = 360 / lets.length
+    let i = 0
+    lets.forEach(letter=>{
+      letter.style.transform = `rotate(${i}deg)`
+      i = i + degreesToRotate
+    })
+  },[letters])
 
 
 
   return (
     <div className="wrapper" ref={el=> app = el}>
       <Head>
-        <title>Welcome - James Todd</title>
+        <title>{pageData.title}</title>
       </Head>
       <div className="nav-wrap" ref={el=> nav = el}>
         <Navbar setClicked={setClicked}/>
@@ -114,7 +109,7 @@ export default function Home() {
 
       {/* page content */}
       <section className="content-container" ref={el=> box = el}>
-        <span className="watermark" ref={el=> watermark = el}>2021 PORTFOLIO</span>
+        <span className="watermark" ref={el=> watermark = el}>{pageData.watermark}</span>
         <div className="content-inner" ref={el=> content = el}>
           <div className="circle-text">
             {letters.map(letter=>{
@@ -128,8 +123,13 @@ export default function Home() {
             </g>
           </svg>
         </div>
-        
       </section>
     </div>
   )
+}
+
+Home.getInitialProps = async ctx=> {
+  const pageCall = await fetch('http://localhost:3000/api/_v1/interface/pages/home')
+  const pageData = await pageCall.json()
+  return {pageData: pageData[0]}
 }

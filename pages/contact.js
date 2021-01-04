@@ -2,18 +2,18 @@ import {useEffect, useState} from 'react'
 import {useRouter} from 'next/router'
 import { Navbar } from "../components/nav/Navbar";
 import { gsap } from 'gsap';
-export default function contact(){
+export default function contact({pageData}){
     const router = useRouter()
     const [clicked, setClicked] = useState(undefined)
-
     // ENTER ANIMATION
     useEffect(()=>{
         let enterTl = gsap.timeline()
         enterTl
-        .from('.form-wrapper', {height: 0, duration: 0.5, overflow: "hidden"})
-        .from('h1', {translateY: "48px", opacity: "0", delay: "-0.5", duration: 0.5})
+        .from('.form-wrapper', {height: 0, duration: 0.8, overflow: "hidden", ease: "back"})
+        .from('h1', {translateY: "48px", opacity: "0", duration: 0.5, delay: "-0.5"})
         .from('label', {translateX: "-100px", opacity: "0", duration: 0.5, delay: "-0.5"})
         .from('input, textarea', {translateY: "150px", opacity: 0, duration: 0.5, delay: "-0.5"})
+        .from('.links', {opacity: 0, duration: 0.5, delay: "-0.5"})
     },[])
 
     // FORM CONTROL
@@ -52,6 +52,7 @@ export default function contact(){
         .to('h1', {translateY: "48px", opacity: "0", delay: "-0.5", duration: 0.5})
         .to('label', {translateX: "-100px", opacity: "0", duration: 0.5, delay: "-0.5"})
         .to('input, textarea', {translateY: "150px", opacity: 0, duration: 0.5, delay: "-0.5"})
+        .to('.links', {translateX: '200px', opacity: 0, duration: 0.3, delay: "-0.3"})
             
     }
     useEffect(()=>{
@@ -59,7 +60,7 @@ export default function contact(){
         pageExit()
         setTimeout(()=>{
             router.push(`/${clicked}`)
-        }, 1000)
+        }, 550)
     },[clicked])
 
     return (
@@ -70,15 +71,15 @@ export default function contact(){
             </div>
             <div className="form-wrapper">
                 <form className="contact-container" onSubmit={handleSubmit}>
-                    <h1>LET'S WORK</h1>
-                    <label htmlFor="name">What's your name?</label>
-                    <input type="text" name="name" id="name" value={name} placeholder="ENTER YOUR NAME" onChange={e=> setName(e.target.value)} required/>
+                    <h1>{pageData.heading}</h1>
+                    <label htmlFor="name">{pageData.form.name.label}</label>
+                    <input type="text" name="name" id="name" value={name} placeholder={pageData.form.name.placeholder} onChange={e=> setName(e.target.value)} required/>
 
-                    <label htmlFor="name">How can I contact you?</label>
-                    <input type="text" name="name" id="name" value={replyTo} placeholder="EMAIL OR PHONE" onChange={e=> setReplyTo(e.target.value)} required/>
+                    <label htmlFor="replyTo">{pageData.form.replyTo.label}</label>
+                    <input type="text" name="replyTo" id="replyTo" value={replyTo} placeholder={pageData.form.replyTo.placeholder} onChange={e=> setReplyTo(e.target.value)} required/>
                     
-                    <label htmlFor="name">What's up?</label>
-                    <textarea name="name" id="name" value={message} placeholder="ENTER YOUR MESSAGE HERE" onChange={e=> setMessage(e.target.value)} required/>
+                    <label htmlFor="name">{pageData.form.message.label}</label>
+                    <textarea name="name" id="name" value={message} placeholder={pageData.form.message.placeholder} onChange={e=> setMessage(e.target.value)} required/>
                     <div>
                         <input type="submit" className="big-link submit-btn" value="SEND"/>
                     </div>
@@ -86,11 +87,16 @@ export default function contact(){
             </div>
            
             <section className="links">
-                <a href="" className="big-link reverse">CODEPEN</a>
-                <a href="" className="big-link reverse">GITHUB</a>
-                <a href="" className="big-link reverse">LINKEDIN</a>
-                <a href="" className="big-link reverse">RESUME</a>
+                {pageData.links.map(link=>{
+                    return <a key={link.name} href={link.url} target="_blank" className="big-link reverse">{link.name}</a>
+                })}
             </section>
         </>
     )
+}
+
+contact.getInitialProps = async ctx=> {
+    const pageCall = await fetch('http://localhost:3000/api/_v1/interface/pages/contact')
+    const pageData = await pageCall.json()
+    return {pageData: pageData[0]}
 }

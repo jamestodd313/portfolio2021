@@ -92,7 +92,7 @@
         .project-image{
             width: calc(100vw - 64px);
             height: calc((100vw - 64px) / 1.618);
-            background: orange;
+            filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.1));
             @media screen and (min-width: 992px){
                 width: calc( 50vw - 140px);
                 height: calc( (50vw - 140px) / 1.618 )

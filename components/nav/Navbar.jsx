@@ -5,12 +5,16 @@ import { useRouter } from 'next/router'
 export const Navbar = ({setClicked, light}) => {
     const router = useRouter()
     const [open, setOpen] = useState(false)
+    const [activeLink, setActiveLink] = useState(undefined)
+    useEffect(()=>{
+        setActiveLink(router.asPath.substr(1))
+    },[router.asPath])
+
     function handleLink(e){
         e.preventDefault()
         if( router.asPath === `/${e.target.innerText.toLowerCase()}`) return
         else setClicked(e.target.innerText.toLowerCase())
     }
-
     let navbar = useRef(null)
     useEffect(()=>{
         if(light){
@@ -36,9 +40,9 @@ export const Navbar = ({setClicked, light}) => {
                     </button>
                 </div>
                 <nav className={open ? "open" : null}>
-                    <a href="/about" className="nav-link" data-id="about" onClick={e=> handleLink(e)}>about</a>
-                    <a href="/work" className="nav-link" data-id="work" onClick={e=> handleLink(e)}>work</a>
-                    <a href="/contact" className="nav-link" data-id="contact" onClick={e=> handleLink(e)}>contact</a>
+                    <a href="/about" className={`nav-link ${activeLink === "about" ? 'active' : ''}`} data-id="about" onClick={e=> handleLink(e)}>about</a>
+                    <a href="/work" className={`nav-link ${activeLink === "work" ? 'active' : ''}`} data-id="work" onClick={e=> handleLink(e)}>work</a>
+                    <a href="/contact" className={`nav-link ${activeLink === "contact" ? 'active' : ''}`} data-id="contact" onClick={e=> handleLink(e)}>contact</a>
                 </nav>
             </header>
         </>

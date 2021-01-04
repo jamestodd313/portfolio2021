@@ -4,21 +4,8 @@ import {TweenMax, gsap} from 'gsap'
 import {useState, useEffect, useRef} from 'react'
 import {Navbar} from '../components/nav/Navbar'
 
-const skills = [
-    {name: "html", size: "small", top: "0%", left: "0%", i: 0},
-    {name: "css", size: "small", top: "50%", left: "30%", i: 1},
-    {name: "javascript", size: "big", top: "20%", left: "5%", i: 2},
-    {name: "sass", size: "big", top: "55%", left: "45%", i: 3},
-    {name: "next", size: "big", top: "0%", left: "25%", i: 4},
-    {name: "react", size: "small", top: "60%", left: "2%", i: 5},
-    {name: "gulp", size: "small", top: "70%", left: "80%", i: 6},
-    {name: "mongo", size: "small", top: "40%", left: "70%", i: 7},
-    {name: "express", size: "small", top: "20%", left: "45%", i: 8},
-    {name: "node", size: "small", top: "65%", left: "15%", i: 9},
-    {name: "jest", size: "small", top: "10%", left: '60%', i: 10},
-    {name: "gsap", size: "big", top: "2%", left: "75%", i: 11},
-]
-export default function about(){
+
+export default function about({pageData}){
     const [clicked, setClicked] = useState(undefined)
     let nav, container, content = useRef(null)
     const router = useRouter()
@@ -42,9 +29,9 @@ export default function about(){
     useEffect(()=>{
         let enterTl = gsap.timeline()
         enterTl
-            .from(container, {width: "0px", duration: 1})
-            .to(content, {opacity: "1", duration: 0.2})
-            .from(circles, {scale: 0, bottom: 0, duration: 0.5, delay: -0.25, stagger: 0.1})
+            .from(container, {width: "0px", duration: 0.8, ease: "back"})
+            .to(content, {opacity: "1", duration: 0.2, delay: "-0.3"})
+            .from(circles, {scale: 0, bottom: 0, duration: 0.5, delay: "-0.2", stagger: 0.1, ease: "back"})
     },[])
 
     //  CIRCLE FLOAT ANIMATION
@@ -150,10 +137,17 @@ export default function about(){
             <Navbar setClicked={setClicked}/>
             <div className="about-container" ref={el=> container = el}>
                 <div className="about-inner" ref={el=> content = el}>
-                    {skills.map(skill=> <div className={`skill ${skill.size} ${skill.name}-circle`} key={Math.random()} style={{top: skill.top, left: skill.left}}>{skill.name}</div>)}
-                    <p className="about-me">hey, i'm a minneapolis based full stack developer. i like javscript, css and rest apis. hire me please.</p>
+                    {pageData.skills.map(skill=> <div className={`skill ${skill.size} ${skill.name}-circle`} key={Math.random()} style={{top: skill.top, left: skill.left}}>{skill.name}</div>)}
+                    <p className="about-me">{pageData.bio}</p>
                 </div>
             </div>
         </>
     )
+}
+
+about.getInitialProps = async ctx=> {
+    const pageCall = await fetch('http://localhost:3000/api/_v1/interface/pages/about')
+    let pageData = await pageCall.json()
+
+    return {pageData: pageData[0]}
 }

@@ -10,7 +10,7 @@ export default function index({projects}){
         let container = document.querySelectorAll('.projects-container')[0]
         const enterTl = gsap.timeline()
         enterTl
-            .from(container, {width: 0})
+            .from(container, {width: 0, ease: "back", duration: 0.8})
     },[])
 
     // OPEN PROJECT ANIMATION
@@ -35,7 +35,7 @@ export default function index({projects}){
                 selectedProject.onClick = null
                 selectedProject.classList.add('expanded')
             })
-        setTimeout(()=>{ router.push(`/work/${selectedProject.id}`)}, 1500)
+        setTimeout(()=>{ router.push(`/work/${selectedProject.id}`)}, 850)
     },[selectedProject])
 
 
@@ -52,45 +52,21 @@ export default function index({projects}){
         .to(project[1], {height: "0px", duration: 0.2, delay: "-0.1"})
         .to(project[2], {width: "0px", duration: 0.2, delay: "-0.1"})
         .to(project[3], {height: "0px", duration: 0.2, delay: "-0.1"})
-        setTimeout(()=>{router.push(`/${clicked}`)}, 1500)
+        setTimeout(()=>{router.push(`/${clicked}`)}, 1000)
     },[clicked])
 
     return (
         <>
         <Navbar setClicked={setClicked}/>
         <div className="projects-container">
-            {projects.map(proj=> <ProjectImage key={proj.id} project={proj} setSelectedProject={setSelectedProject}/>)}
+            {projects.map(proj=> <ProjectImage key={proj._id} project={proj} setSelectedProject={setSelectedProject}/>)}
         </div>
         </>
     )
 }
 
 index.getInitialProps = async(ctx)=> {
-    let projects = [
-        {
-            id: "01",
-            title: "Project One",
-            images: {},
-            slug: "project-one-slug",
-        },
-        {
-            id: "02",
-            title: "Project Two",
-            images: {},
-            slug: "project-two-slug",
-        },
-        {
-            id: "03",
-            title: "Project three",
-            images: {},
-            slug: "project-three-slug",
-        },
-        {
-            id: "04",
-            title: "Project four",
-            images: {},
-            slug: "project-four-slug",
-        },
-    ]
-    return {projects}
+    const projectsCall = await fetch('http://localhost:3000/api/_v1/interface/projects')
+    const projectsData = await projectsCall.json()
+    return {projects: projectsData}
 }
