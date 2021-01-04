@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "emailjs-com": "^2.6.4",
     "gsap": "^3.5.1",
     "mongoose": "^5.11.9",
     "next": "10.0.4",

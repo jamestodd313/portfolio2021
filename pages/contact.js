@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import {useRouter} from 'next/router'
 import { Navbar } from "../components/nav/Navbar";
 import { gsap } from 'gsap';
+import emailjs from 'emailjs-com'
 export default function contact({pageData}){
     const router = useRouter()
     const [clicked, setClicked] = useState(undefined)
@@ -22,11 +23,15 @@ export default function contact({pageData}){
     const [message, setMessage] = useState('')
 
     function sendEmail(obj){
-        let txt = document.querySelectorAll('.submit-btn')[0]
+        const txt = document.querySelectorAll('.submit-btn')[0]
         txt.value = "SENDING..."
-        txt.value= "SENT"
-        txt.style.pointerEvents = "none"
-        console.log(obj)
+
+        emailjs.init('user_QDvaAk7HyF6P9fagkoIIS')
+        emailjs.send("gmail", "template_rh6fY4CM", obj)
+        .then(()=>{
+            txt.value= "SENT"
+            txt.style.pointerEvents = "none"
+        })
     }
     function formExit(){
         let formExitTl = gsap.timeline()
