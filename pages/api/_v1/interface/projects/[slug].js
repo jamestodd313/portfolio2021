@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
-// import Project from '../../../../../mongo/models/project'
-const Project = mongoose.model('Project')
+import Project from '../../../../../mongo/models/project'
+// const Project = mongoose.model('Project')
 
 export default async (req, res)=>{
     try{

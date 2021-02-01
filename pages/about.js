@@ -146,7 +146,7 @@ export default function about({pageData}){
 }
 
 about.getInitialProps = async ctx=> {
-    const pageCall = await fetch('http://localhost:3000/api/_v1/interface/pages/about')
+    const pageCall = await fetch('https://portfolio2021-two.vercel.app/api/_v1/interface/pages/about')
     let pageData = await pageCall.json()
 
     return {pageData: pageData[0]}
