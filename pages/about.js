@@ -18,7 +18,7 @@ export default function about({pageData}){
         SASScirc = document.querySelectorAll('.sass-circle')[0]
         NEXTcirc = document.querySelectorAll('.next-circle')[0]
         REACTcirc = document.querySelectorAll('.react-circle')[0]
-        webpackcirc = document.querySelectorAll('.gulp-circle')[0]
+        webpackcirc = document.querySelectorAll('.webpack-circle')[0]
         MONGOcirc = document.querySelectorAll('.mongo-circle')[0]
         EXPRESScirc = document.querySelectorAll('.express-circle')[0]
         NODEcirc = document.querySelectorAll('.node-circle')[0]
