@@ -9,7 +9,7 @@ export default function about({pageData}){
     const [clicked, setClicked] = useState(undefined)
     let nav, container, content = useRef(null)
     const router = useRouter()
-    let circles, HTMLcirc, CSScirc, JScirc, SASScirc, NEXTcirc, REACTcirc, GULPcirc, MONGOcirc, EXPRESScirc, NODEcirc, JESTcirc, GSAPcirc
+    let circles, HTMLcirc, CSScirc, JScirc, SASScirc, NEXTcirc, REACTcirc, webpackcirc, MONGOcirc, EXPRESScirc, NODEcirc, JESTcirc, GSAPcirc
     useEffect(() => {
         circles = document.querySelectorAll('.skill')
         HTMLcirc = document.querySelectorAll('.html-circle')[0]
@@ -18,7 +18,7 @@ export default function about({pageData}){
         SASScirc = document.querySelectorAll('.sass-circle')[0]
         NEXTcirc = document.querySelectorAll('.next-circle')[0]
         REACTcirc = document.querySelectorAll('.react-circle')[0]
-        GULPcirc = document.querySelectorAll('.gulp-circle')[0]
+        webpackcirc = document.querySelectorAll('.gulp-circle')[0]
         MONGOcirc = document.querySelectorAll('.mongo-circle')[0]
         EXPRESScirc = document.querySelectorAll('.express-circle')[0]
         NODEcirc = document.querySelectorAll('.node-circle')[0]
@@ -44,7 +44,7 @@ export default function about({pageData}){
             .to(SASScirc, {left: "47%", top: "45%", duration: 1.5, delay: -1.5})
             .to(NEXTcirc, {left: "24%", top: "2%", duration: 1.5, delay: -1.5})
             .to(REACTcirc, {left: "5%", top: "55%", duration: 1.5, delay: -1.5})
-            .to(GULPcirc, {left: "75%", top: "65%", duration: 1.5, delay: -1.5})
+            .to(webpackcirc, {left: "75%", top: "65%", duration: 1.5, delay: -1.5})
             .to(MONGOcirc, {left: "75%", top: "42%", duration: 1.5, delay: -1.5})
             .to(EXPRESScirc, {left: "50%", top: "25%", duration: 1.5, delay: -1.5})
             .to(NODEcirc, {left: "20%", top: "70%", duration: 1.5, delay: -1.5})
@@ -57,7 +57,7 @@ export default function about({pageData}){
             .to(SASScirc, {left: "51%", top: "50%", duration: 1.5, delay: -1.5})
             .to(NEXTcirc, {left: "28%", top: "0%", duration: 1.5, delay: -1.5})
             .to(REACTcirc, {left: "5%", top: "59%", duration: 1.5, delay: -1.5})
-            .to(GULPcirc, {left: "72%", top: "62%", duration: 1.5, delay: -1.5})
+            .to(webpackcirc, {left: "72%", top: "62%", duration: 1.5, delay: -1.5})
             .to(MONGOcirc, {left: "80%", top: "45%", duration: 1.5, delay: -1.5})
             .to(EXPRESScirc, {left: "53%", top: "22%", duration: 1.5, delay: -1.5})
             .to(NODEcirc, {left: "25%", top: "73%", duration: 1.5, delay: -1.5})
@@ -70,7 +70,7 @@ export default function about({pageData}){
             .to(SASScirc, {left: "48%", top: "56%", duration: 1.5, delay: -1.5})
             .to(NEXTcirc, {left: "30%", top: "3%", duration: 1.5, delay: -1.5})
             .to(REACTcirc, {left: "3%", top: "63%", duration: 1.5, delay: -1.5})
-            .to(GULPcirc, {left: "75%", top: "62%", duration: 1.5, delay: -1.5})
+            .to(webpackcirc, {left: "75%", top: "62%", duration: 1.5, delay: -1.5})
             .to(MONGOcirc, {left: "83%", top: "42%", duration: 1.5, delay: -1.5})
             .to(EXPRESScirc, {left: "52%", top: "26%", duration: 1.5, delay: -1.5})
             .to(NODEcirc, {left: "28%", top: "70%", duration: 1.5, delay: -1.5})
@@ -83,7 +83,7 @@ export default function about({pageData}){
             .to(SASScirc, {left: "51%", top: "50%", duration: 1.5, delay: -1.5})
             .to(NEXTcirc, {left: "28%", top: "0%", duration: 1.5, delay: -1.5})
             .to(REACTcirc, {left: "5%", top: "59%", duration: 1.5, delay: -1.5})
-            .to(GULPcirc, {left: "72%", top: "62%", duration: 1.5, delay: -1.5})
+            .to(webpackcirc, {left: "72%", top: "62%", duration: 1.5, delay: -1.5})
             .to(MONGOcirc, {left: "80%", top: "45%", duration: 1.5, delay: -1.5})
             .to(EXPRESScirc, {left: "53%", top: "22%", duration: 1.5, delay: -1.5})
             .to(NODEcirc, {left: "25%", top: "73%", duration: 1.5, delay: -1.5})
@@ -96,7 +96,7 @@ export default function about({pageData}){
             .to(SASScirc, {left: "47%", top: "45%", duration: 1.5, delay: -1.5})
             .to(NEXTcirc, {left: "24%", top: "2%", duration: 1.5, delay: -1.5})
             .to(REACTcirc, {left: "5%", top: "55%", duration: 1.5, delay: -1.5})
-            .to(GULPcirc, {left: "75%", top: "65%", duration: 1.5, delay: -1.5})
+            .to(webpackcirc, {left: "75%", top: "65%", duration: 1.5, delay: -1.5})
             .to(MONGOcirc, {left: "75%", top: "42%", duration: 1.5, delay: -1.5})
             .to(EXPRESScirc, {left: "50%", top: "25%", duration: 1.5, delay: -1.5})
             .to(NODEcirc, {left: "20%", top: "70%", duration: 1.5, delay: -1.5})
@@ -109,7 +109,7 @@ export default function about({pageData}){
             .to(SASScirc, {left: "45%", top: "55%", duration: 2, delay: -2})
             .to(NEXTcirc, {left: "25%", top: "0%", duration: 2, delay: -2})
             .to(REACTcirc, {left: "2%", top: "60%", duration: 2, delay: -2})
-            .to(GULPcirc, {left: "80%", top: "70%", duration: 2, delay: -2})
+            .to(webpackcirc, {left: "80%", top: "70%", duration: 2, delay: -2})
             .to(MONGOcirc, {left: "70%", top: "40%", duration: 2, delay: -2})
             .to(EXPRESScirc, {left: "45%", top: "20%", duration: 2, delay: -2})
             .to(NODEcirc, {left: "15%", top: "65%", duration: 2, delay: -2})
