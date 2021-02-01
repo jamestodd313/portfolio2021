@@ -5,4 +5,8 @@ const PageSchema = mongoose.Schema({
 
 }, {strict: false})
 
-module.exports = mongoose.model('Page', PageSchema)
+try {
+  module.exports = mongoose.model('Page')
+} catch (error) {
+  module.exports = mongoose.model('Page', PageSchema)
+}

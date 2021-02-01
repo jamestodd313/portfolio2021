@@ -12,6 +12,9 @@ const ProjectSchema = mongoose.Schema({
     mockupImage: String
 })
 
-// const Project = mongoose.model("Project", ProjectSchema)
 
-module.exports = mongoose.model('Project', ProjectSchema)
+try {
+    module.exports = mongoose.model('Project')
+} catch (error) {
+    module.exports = mongoose.model('Project', ProjectSchema)
+}
