@@ -73,11 +73,11 @@ html {
 }
 
 h1, .logo, .nav-link, .outline-link {
-  font-family: 'Staatliches';
+  font-family: 'Staatliches', sans-serif;
 }
 
 body {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
 }
 
 p {
@@ -86,20 +86,20 @@ p {
 }
 
 label {
-  font-family: 'Bungee Hairline';
+  font-family: 'Bungee Hairline', sans-serif;
 }
 
 input[type=text] {
-  font-family: 'Bungee';
+  font-family: 'Bungee', sans-serif;
 }
 
 textarea {
-  font-family: "Bungee";
+  font-family: "Bungee", sans-serif;
   font-size: 28px;
 }
 
 .nav-link:hover, .nav-link.active {
-  font-family: 'Lacquer';
+  font-family: 'Lacquer', sans-serif;
   text-transform: capitalize;
 }
 
@@ -126,7 +126,7 @@ a {
 .circle-letter {
   font-size: 15px;
   text-transform: uppercase;
-  font-family: 'Staatliches';
+  font-family: 'Staatliches', sans-serif;
   color: #5a5a5a;
 }
 
@@ -165,7 +165,7 @@ h1 {
 
 .big-link {
   cursor: pointer;
-  font-family: "Staatliches";
+  font-family: "Staatliches", sans-serif;
   font-size: 30px;
   line-height: calc(30px * 1.618);
   color: #454545;
@@ -341,7 +341,7 @@ header nav .nav-link::before {
 
 .load-txt {
   font-size: 140px;
-  font-family: 'Staatliches';
+  font-family: 'Staatliches', sans-serif;
   position: fixed;
 }
 
@@ -399,7 +399,7 @@ header nav .nav-link::before {
   left: -15px;
   -webkit-transform-origin: left;
           transform-origin: left;
-  font-family: 'Staatliches';
+  font-family: 'Staatliches', sans-serif;
   font-size: 35px;
   color: transparent;
   -webkit-text-stroke: 1px #5a5a5a;
@@ -550,7 +550,7 @@ header nav .nav-link::before {
   display: -ms-grid;
   display: grid;
   place-content: center;
-  font-family: 'Bungee Hairline';
+  font-family: 'Bungee Hairline', sans-serif;
 }
 
 .about-container .skill.big {

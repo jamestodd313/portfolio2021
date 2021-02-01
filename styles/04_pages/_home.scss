@@ -31,7 +31,7 @@
 }
 .load-txt{
     font-size: 140px;
-    font-family: 'Staatliches';
+    font-family: 'Staatliches', sans-serif;
     position: fixed;
     &:first-of-type{
         right: 50%;
@@ -76,7 +76,7 @@
         top: 97%;
         left: -15px;
         transform-origin: left;
-        font-family: 'Staatliches';
+        font-family: 'Staatliches', sans-serif;
         font-size: 35px;
         color: transparent;
         -webkit-text-stroke: 1px $grey;

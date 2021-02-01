@@ -1,25 +1,25 @@
 h1, .logo, .nav-link, .outline-link{
-    font-family: 'Staatliches';
+    font-family: 'Staatliches', sans-serif;
 }
 body{
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
 }
 p{
     font-size: 12px;
     line-height: calc(12px * 1.618);
 }
 label{
-    font-family: 'Bungee Hairline';
+    font-family: 'Bungee Hairline', sans-serif;
 }
 input[type=text]{
-    font-family: 'Bungee';
+    font-family: 'Bungee', sans-serif;
 }
 textarea{
-    font-family: "Bungee";
+    font-family: "Bungee", sans-serif;
     font-size: 28px;
 }
 .nav-link:hover, .nav-link.active{
-    font-family: 'Lacquer';
+    font-family: 'Lacquer', sans-serif;
     text-transform: capitalize;
 }
 a{
@@ -41,7 +41,7 @@ a{
 .circle-letter{
     font-size: 15px;
     text-transform: uppercase;
-    font-family: 'Staatliches';
+    font-family: 'Staatliches', sans-serif;
     color: $grey;
     @media screen and (min-width: 768px) {
         font-size: 20px;
@@ -70,7 +70,7 @@ h1{
 // the big link/button that changes to outline on hover
 .big-link{
     cursor: pointer;
-    font-family: "Staatliches";
+    font-family: "Staatliches", sans-serif;
     font-size: 30px;
     line-height: calc(30px * 1.618);
     color: $darkgrey;
