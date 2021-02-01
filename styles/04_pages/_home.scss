@@ -101,7 +101,7 @@
     .dashed-circle{
         height: 60%;
         width: 60%;
-        animation: clock 12s linear infinite;
+        animation: clock 18s linear infinite;
         @keyframes clock{
             0%{
                 transform: translate(-50%, -50%) rotate(0deg);
@@ -114,7 +114,7 @@
     .circle-text{
         height: 100%;
         width: 100%;
-        animation: counterClock 10s linear infinite;
+        animation: counterClock 13s linear infinite;
         @keyframes counterClock{
             0%{
                 transform: translate(-50%, -50%) rotate(0deg);

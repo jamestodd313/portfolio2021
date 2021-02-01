@@ -430,8 +430,8 @@ header nav .nav-link::before {
 .content-inner .dashed-circle {
   height: 60%;
   width: 60%;
-  -webkit-animation: clock 12s linear infinite;
-          animation: clock 12s linear infinite;
+  -webkit-animation: clock 18s linear infinite;
+          animation: clock 18s linear infinite;
 }
 
 @-webkit-keyframes clock {
@@ -459,8 +459,8 @@ header nav .nav-link::before {
 .content-inner .circle-text {
   height: 100%;
   width: 100%;
-  -webkit-animation: counterClock 10s linear infinite;
-          animation: counterClock 10s linear infinite;
+  -webkit-animation: counterClock 13s linear infinite;
+          animation: counterClock 13s linear infinite;
 }
 
 @-webkit-keyframes counterClock {
