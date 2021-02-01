@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import dbConnect from '../../../../../mongo/dbConnect'
-import Page from '../../../../../mongo/models/page'
-// const Page = mongoose.model('Page')
+// import Page from '../../../../../mongo/models/page'
+const Page = mongoose.model('Page')
 dbConnect()
 export default async(req, res)=> {
     try{
