@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export const ProjectImage = ({project, setSelectedProject, isExpanded}) => {
     function handleHover(e){
         let thumbos = document.querySelectorAll('.project-thumbnail-wrapper')
@@ -14,8 +16,14 @@ export const ProjectImage = ({project, setSelectedProject, isExpanded}) => {
         setSelectedProject(e.currentTarget)
     }
     return (
+        // <div className={`project-thumbnail-wrapper ${isExpanded ? 'expanded' : ''}`} id={project.slug} onMouseOver={e=> handleHover(e)} onMouseLeave={unHover} onClick={e=> handleClick(e)}>
+        //     <img src={project.coverImage} className="project-thumbnail"/>
+        //     <span className="project-thumbnail-title">{project.title}</span>
+        // </div>
+        
         <div className={`project-thumbnail-wrapper ${isExpanded ? 'expanded' : ''}`} id={project.slug} onMouseOver={e=> handleHover(e)} onMouseLeave={unHover} onClick={e=> handleClick(e)}>
-            <img src={project.coverImage} className="project-thumbnail"/>
+            {/* <img src={project.coverImage} className="project-thumbnail"/> */}
+            <Image src={project.coverImage} className="project-thumbnail" priority alt={project.title + ' thumbnail'}/>
             <span className="project-thumbnail-title">{project.title}</span>
         </div>
     )
