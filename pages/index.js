@@ -93,7 +93,7 @@ export default function Home({pageData}) {
   return (
     <div className="wrapper" ref={el=> app = el}>
       <Head>
-        <title>{pageData.title}</title>
+        <title>{pageData.title ? pageData.title : 'Welcome - James Todd'}</title>
       </Head>
       <div className="nav-wrap" ref={el=> nav = el}>
         <Navbar setClicked={setClicked}/>

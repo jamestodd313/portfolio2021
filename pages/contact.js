@@ -3,6 +3,7 @@ import {useRouter} from 'next/router'
 import { Navbar } from "../components/nav/Navbar";
 import { gsap } from 'gsap';
 import emailjs from 'emailjs-com'
+import Head from 'next/head';
 export default function contact({pageData}){
     const router = useRouter()
     const [clicked, setClicked] = useState(undefined)
@@ -70,6 +71,9 @@ export default function contact({pageData}){
 
     return (
         <>
+            <Head>
+                <title>{pageData.title ? pageData.title : "Contact - James Todd"}</title>
+            </Head>
             <Navbar setClicked={setClicked}/>
             <div className="form-wrapper">
 

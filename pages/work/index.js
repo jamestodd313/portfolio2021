@@ -1,4 +1,5 @@
 import {TweenMax, gsap} from 'gsap'
+import Head from 'next/head';
 import { useRouter } from 'next/router'
 import { useEffect, useState, useRef } from "react";
 import { Navbar } from "../../components/nav/Navbar";
@@ -57,6 +58,9 @@ export default function index({projects}){
 
     return (
         <>
+        <Head>
+            <title>Work - James Todd</title>
+        </Head>
         <Navbar setClicked={setClicked}/>
         <div className="projects-container">
             {projects.map(proj=> <ProjectImage key={proj._id} project={proj} setSelectedProject={setSelectedProject}/>)}
