@@ -66,7 +66,7 @@ export default function index({projects}){
 }
 
 index.getInitialProps = async(ctx)=> {
-    const projectsCall = await fetch('https://portfolio2021-two.vercel.app/api/_v1/interface/projects')
+    const projectsCall = await fetch('https://jamestodd.dev/api/_v1/interface/projects')
     const projectsData = await projectsCall.json()
     return {projects: projectsData}
 }

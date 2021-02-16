@@ -129,7 +129,7 @@ export default function Home({pageData}) {
 }
 
 Home.getInitialProps = async ctx=> {
-  const pageCall = await fetch('https://portfolio2021-two.vercel.app/api/_v1/interface/pages/home')
+  const pageCall = await fetch('https://jamestodd.dev/api/_v1/interface/pages/home')
   const pageData = await pageCall.json()
   return {pageData: pageData[0]}
 }

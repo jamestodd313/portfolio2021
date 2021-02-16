@@ -126,7 +126,7 @@ project.getInitialProps = async (ctx)=> {
         builtWith: ["MERN", "GSAP", "MongoDB", "Mongoose"]
     }
 
-    const projectCall = await fetch(`https://portfolio2021-two.vercel.app/api/_v1/interface/projects/${ctx.query.project}`)
+    const projectCall = await fetch(`https://jamestodd.dev/api/_v1/interface/projects/${ctx.query.project}`)
     const projectData = await projectCall.json()
     return {project: projectData}
 }
