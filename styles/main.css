@@ -72,6 +72,17 @@ html {
   color: black;
 }
 
+/* staatliches-regular - latin */
+@font-face {
+  font-family: 'Staatliches';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/staatliches-v5-latin-regular.eot");
+  /* IE9 Compat Modes */
+  src: local(""), url("../fonts/staatliches-v5-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/staatliches-v5-latin-regular.woff2") format("woff2"), url("../fonts/staatliches-v5-latin-regular.woff") format("woff"), url("../fonts/staatliches-v5-latin-regular.ttf") format("truetype"), url("../fonts/staatliches-v5-latin-regular.svg#Staatliches") format("svg");
+  /* Legacy iOS */
+}
+
 h1, .logo, .nav-link, .outline-link {
   font-family: 'Staatliches', sans-serif;
 }
