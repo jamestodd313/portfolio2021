@@ -23,7 +23,7 @@ export const ProjectImage = ({project, setSelectedProject, isExpanded}) => {
         
         <div className={`project-thumbnail-wrapper ${isExpanded ? 'expanded' : ''}`} id={project.slug} onMouseOver={e=> handleHover(e)} onMouseLeave={unHover} onClick={e=> handleClick(e)}>
             {/* <img src={project.coverImage} className="project-thumbnail"/> */}
-            <Image src={project.coverImage} className="project-thumbnail" priority alt={project.title + ' thumbnail'}/>
+            <Image src={project.coverImage} className="project-thumbnail" priority alt={project.title + ' thumbnail'} width={"100vw"} height={"auto"}/>
             <span className="project-thumbnail-title">{project.title}</span>
         </div>
     )
