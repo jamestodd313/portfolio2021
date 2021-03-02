@@ -69,6 +69,9 @@ export default function project ({project}){
     //GO BACK
     const router = useRouter()
 
+    const handleButton = function(clicked){
+        console.log(clicked)
+    }
     return (
         <>
         <Head>
@@ -79,8 +82,8 @@ export default function project ({project}){
         </div>
         <ProjectImage project={project} isExpanded={true}/>
         <div className="cta-buttons" ref={el=> ctaBtns = el}>
-            <button className="demo">DEMO</button>
-            <button className="repo">REPO</button>
+            <a className="demo" onClick={e=> handleButton(e.target.className)}>DEMO</a>
+            <a className="repo" onClick={e=> handleButton(e.target.className)}>REPO</a>
         </div>
 
         <section className="project-wrapper">

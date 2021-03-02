@@ -6,8 +6,8 @@ export default async (req, res)=>{
     try{
         const proj = await Project.find({slug: req.query.slug})
         return res.status(200).json(proj[0])
-    }catch{
-        return res.status(500).json({message: "what"})
+    }catch(e){
+        return res.status(500).json({error: e})
     }
 
 }
