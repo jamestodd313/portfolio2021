@@ -730,7 +730,7 @@ header nav .nav-link::before {
           transform: translate(-50%, -50%);
 }
 
-.cta-buttons button {
+.cta-buttons a {
   padding: 16px 40px;
   margin: 16px 0px;
   font-family: "Staatliches";
@@ -742,7 +742,7 @@ header nav .nav-link::before {
   width: 100%;
 }
 
-.cta-buttons button:hover {
+.cta-buttons a:hover {
   background: #454545;
   color: white;
 }
