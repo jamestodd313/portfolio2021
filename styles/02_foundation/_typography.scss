@@ -118,7 +118,7 @@ textarea{
     font-family: "Bungee", sans-serif;
     font-size: 28px;
 }
-.nav-link:hover, .nav-link.active{
+.nav-link:hover, .nav-link.active, .nav-link:focus{
     font-family: 'Lacquer', sans-serif;
     text-transform: capitalize;
 }

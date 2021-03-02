@@ -102,8 +102,8 @@ export default function Home({pageData}) {
       {/* intro animation stuff */}
       <div className="loader" ref={el=> bar = el}/>
       <div className="block1" ref={el=>block1 = el}/>
-      <span className="load-txt" ref={el=> james = el}>{firstTxt}</span>
-      <span className="load-txt" ref={el=> todd = el}>{lastTxt}</span>
+      <span className="load-txt" aria-hidden="true" ref={el=> james = el}>{firstTxt}</span>
+      <span className="load-txt" aria-hidden="true" ref={el=> todd = el}>{lastTxt}</span>
       <div className="block2" ref={el=>block2 = el}/>
 
 
@@ -112,9 +112,12 @@ export default function Home({pageData}) {
         <span className="watermark" ref={el=> watermark = el}>{pageData.watermark}</span>
         <div className="content-inner" ref={el=> content = el}>
           <div className="circle-text">
+            <h1>
             {letters.map(letter=>{
               return <span className="circle-letter" key={Math.random()}>{letter}</span>
             })}
+            </h1>
+
           </div>
           <svg className="dashed-circle" xmlns="http://www.w3.org/2000/svg" width="191" height="191" viewBox="0 0 191 191">
             <g id="Inner_Circle" data-name="Inner Circle" fill="none" stroke="#707070" strokeWidth="5" strokeDasharray="50">

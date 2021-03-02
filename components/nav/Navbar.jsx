@@ -26,7 +26,7 @@ export const Navbar = ({setClicked, light}) => {
         <>
             <header ref={el=> navbar = el}>
                 <Link href="/" as="/">
-                    <a className="logo">james todd</a>
+                    <a className="logo" aria-label="home">james todd</a>
                 </Link>
                 <div className="button-container">
                     <button className={open ? "menu-toggle open" : "menu-toggle"} onClick={e=> setOpen(!open)}>
