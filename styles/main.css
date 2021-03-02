@@ -619,11 +619,11 @@ header nav .nav-link::before {
   pointer-events: none;
 }
 
-.project-thumbnail-wrapper:hover {
+.project-thumbnail-wrapper:hover, .project-thumbnail-wrapper:focus {
   height: 50vh;
 }
 
-.project-thumbnail-wrapper:hover .project-thumbnail {
+.project-thumbnail-wrapper:hover .project-thumbnail, .project-thumbnail-wrapper:focus .project-thumbnail {
   height: 55vh;
   opacity: 1;
 }

@@ -34,7 +34,7 @@
         visibility: hidden;
         pointer-events: none;
     }
-    &:hover{
+    &:hover, &:focus{
         height: 50vh;
         .project-thumbnail{
             height: 55vh;
