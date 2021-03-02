@@ -88,7 +88,7 @@
             pointer-events: none;
             color: white;
         }
-        &:hover{
+        &:hover, &:focus{
             height: 80vh;
             width: 70%;
             .project-thumbnail{

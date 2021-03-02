@@ -680,16 +680,16 @@ header nav .nav-link::before {
     pointer-events: none;
     color: white;
   }
-  .project-thumbnail-wrapper:hover {
+  .project-thumbnail-wrapper:hover, .project-thumbnail-wrapper:focus {
     height: 80vh;
     width: 70%;
   }
-  .project-thumbnail-wrapper:hover .project-thumbnail {
+  .project-thumbnail-wrapper:hover .project-thumbnail, .project-thumbnail-wrapper:focus .project-thumbnail {
     height: 100vh;
     -webkit-filter: brightness(0.9);
             filter: brightness(0.9);
   }
-  .project-thumbnail-wrapper:hover .project-thumbnail-title {
+  .project-thumbnail-wrapper:hover .project-thumbnail-title, .project-thumbnail-wrapper:focus .project-thumbnail-title {
     opacity: 1;
   }
   .project-thumbnail-wrapper.expanded {
