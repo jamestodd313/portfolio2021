@@ -741,7 +741,7 @@ header nav .nav-link::before {
   transition: 0.2s;
   width: 100%;
   text-align: center;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .cta-buttons a:hover {
