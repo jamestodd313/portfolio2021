@@ -82,8 +82,8 @@ export default function project ({project}){
         </div>
         <ProjectImage project={project} isExpanded={true}/>
         <div className="cta-buttons" ref={el=> ctaBtns = el}>
-            <a className="demo" onClick={e=> handleButton(e.target.className)}>DEMO</a>
-            <a className="repo" onClick={e=> handleButton(e.target.className)}>REPO</a>
+            <a className="demo" href={project.demo} target="_blank">DEMO</a>
+            <a className="repo" href={project.repo} target="_blank">REPO</a>
         </div>
 
         <section className="project-wrapper">

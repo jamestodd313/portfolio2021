@@ -740,6 +740,8 @@ header nav .nav-link::before {
   -webkit-transition: 0.2s;
   transition: 0.2s;
   width: 100%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .cta-buttons a:hover {
@@ -757,7 +759,7 @@ header nav .nav-link::before {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  .cta-buttons button {
+  .cta-buttons a {
     width: calc( 50% - 8px);
     margin: 0;
   }

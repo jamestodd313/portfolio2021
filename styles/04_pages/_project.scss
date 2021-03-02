@@ -17,6 +17,8 @@
         border-radius: 1px;
         transition: 0.2s;
         width: 100%;
+        text-align: center;
+        background: rgba(255,255,255,0.15);
         &:hover{
             background: $darkgrey;
             color: white;
@@ -26,7 +28,7 @@
         width: 500px;
         display: flex;
         justify-content: space-between;
-        button{
+        a{
             width: calc( 50% - 8px);
             margin: 0;
         }
