@@ -307,7 +307,6 @@ header nav .nav-link::before {
   width: calc(100vw - 64px);
   height: calc((100vw - 64px) / 1.618);
   overflow: hidden;
-  background: red;
 }
 
 @media screen and (min-width: 992px) {
@@ -318,7 +317,6 @@ header nav .nav-link::before {
 }
 
 .slider-outer .slider-inner {
-  background: green;
   -webkit-animation: slider 10s linear infinite;
           animation: slider 10s linear infinite;
   white-space: nowrap;

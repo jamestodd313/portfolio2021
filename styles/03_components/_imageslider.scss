@@ -7,7 +7,6 @@
         height: calc( (50vw - 140px) / 1.618 )
     }
     .slider-inner{
-        background: green;
         animation: slider 10s linear infinite;
         white-space: nowrap;
         img{
@@ -32,6 +31,4 @@
             transform: translateX(-1%);
         }
     }
-
-    background: red;
 }
