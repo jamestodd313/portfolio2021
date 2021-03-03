@@ -92,7 +92,7 @@ export default function project ({project}){
                     </p>
                 </div>
                 <div className="project-images" ref={el=> projectImages = el}>
-                    <ImageSlider images={[project.mockupImage, project.mockupImage]}/>
+                    <ImageSlider images={project.sliderImages}/>
                 </div>
                 <div className="details">
                     <div className="detail-item">
