@@ -6,6 +6,7 @@ import { ProjectImage } from "../../components/projects/ProjectImage";
 
 import {TweenMax, gsap} from 'gsap'
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ImageSlider } from '../../components/projects/ImageSlider';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 export default function project ({project}){
+    const router = useRouter()
     const [clicked, setClicked] = useState(undefined)
     // REMOVE "//" FROM END OF BUILT WITH SECTION
     useEffect(()=>{
@@ -66,12 +68,6 @@ export default function project ({project}){
         exitAnimation("clicked")
     },[clicked])
 
-    //GO BACK
-    const router = useRouter()
-
-    const handleButton = function(clicked){
-        console.log(clicked)
-    }
     return (
         <>
         <Head>
@@ -96,7 +92,7 @@ export default function project ({project}){
                     </p>
                 </div>
                 <div className="project-images" ref={el=> projectImages = el}>
-                    <img src={project.mockupImage} className="project-image"/>
+                    <ImageSlider images={[project.mockupImage, project.mockupImage]}/>
                 </div>
                 <div className="details">
                     <div className="detail-item">

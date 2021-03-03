@@ -1,0 +1,37 @@
+.slider-outer{
+    width: calc(100vw - 64px);
+    height: calc((100vw - 64px) / 1.618);
+    overflow: hidden;
+    @media screen and (min-width: 992px){
+        width: calc( 50vw - 140px);
+        height: calc( (50vw - 140px) / 1.618 )
+    }
+    .slider-inner{
+        background: green;
+        animation: slider 10s linear infinite;
+        white-space: nowrap;
+        img{
+            display: inline-block;
+            object-fit: cover;
+        }
+    }
+    @keyframes slider{
+        0%{
+            transform: translateX(0);
+        }
+        49%{
+            transform: translateX(0);
+        }
+        50%{
+            transform: translateX(-100%);
+        }
+        99%{
+            transform: translateX(-100%);
+        }
+        100%{
+            transform: translateX(-1%);
+        }
+    }
+
+    background: red;
+}
