@@ -108,6 +108,9 @@
             max-height: 80vh;
             min-height: 80vh;
             min-width: 100vw;
+            &:focus{
+                outline: none;
+            }
             .project-thumbnail{
                 filter: brightness(0.9);
                 opacity:1;

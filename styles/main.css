@@ -775,6 +775,9 @@ header nav .nav-link::before {
     min-height: 80vh;
     min-width: 100vw;
   }
+  .project-thumbnail-wrapper.expanded:focus {
+    outline: none;
+  }
   .project-thumbnail-wrapper.expanded .project-thumbnail {
     -webkit-filter: brightness(0.9);
             filter: brightness(0.9);
