@@ -761,9 +761,6 @@ header nav .nav-link::before {
     -webkit-filter: brightness(0.9);
             filter: brightness(0.9);
   }
-  .project-thumbnail-wrapper:hover .project-thumbnail-title, .project-thumbnail-wrapper:focus .project-thumbnail-title {
-    opacity: 1;
-  }
   .project-thumbnail-wrapper.expanded {
     -webkit-transition: 0.3s;
     transition: 0.3s;
