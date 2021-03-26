@@ -115,17 +115,21 @@ export default function project ({project}){
     )
 }
 
-project.getInitialProps = async (ctx)=> {
-    let project = {
-        id: "01", 
-        title: "Porject Nam",
-        images: [],
-        slug: "project-name",
-        lightNav: true,
-        builtWith: ["MERN", "GSAP", "MongoDB", "Mongoose"]
-    }
 
-    const projectCall = await fetch(`https://jamestodd.dev/api/_v1/interface/projects/${ctx.query.project}`)
+export const getServerSideProps = async(ctx)=> {
+    const projectCall = await fetch(`https://jamestodd.dev/api/_v1/interface/projects/${ctx.params.project}`)
+    // const projectCall = await fetch(`http://localhost:3000/api/_v1/interface/projects/${ctx.query.project}`)
     const projectData = await projectCall.json()
-    return {project: projectData}
+    return {props: {project: projectData}}
 }
+
+// export const getStaticPaths = async()=> {
+//     const projectsCall = await fetch('https://jamestodd.dev/api/_v1/interface/projects')
+//     // const projectsCall = await fetch('http://localhost:3000/api/_v1/interface/projects')
+//     const projectsData = await projectsCall.json()
+
+//     let slugs = projectsData.map(project=> project.slug)
+//     let paths = slugs.map(project=> ({params: {project: project}}))
+ 
+//     return {paths, fallback: false}
+// }
