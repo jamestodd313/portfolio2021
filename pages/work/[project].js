@@ -117,27 +117,26 @@ export default function project ({project}){
 }
 
 
-export const getStaticProps = async(ctx)=> {
-    // const projectCall = await fetch(`https://jamestodd.dev/api/_v1/interface/projects/${ctx.params.project}`)
-    // // const projectCall = await fetch(`http://localhost:3000/api/_v1/interface/projects/${ctx.query.project}`)
-    // const projectData = await projectCall.json()
+// export const getStaticProps = async(ctx)=> {
+//     try{
+//         const proj = await Project.find({slug: ctx.params.slug})
+//         return {props: {project: proj[0]}}
+//     }catch(e){
+//         return res.status(500).json({error: e})
+//     }
+// }
 
-    try{
-        const proj = await Project.find({slug: req.query.slug})
-        return {props: {project: proj[0]}}
-    }catch(e){
-        return res.status(500).json({error: e})
-    }
-}
+project.getInitialProps = async(ctx)=> {
+    const projectsCall = await fetch(`https://jamestodd.dev/api/_v1/interface/projects/${ctx.query.slug}`)
+    const projectsData = await projectsCall.json()
 
-export const getStaticPaths = async()=> {
-    // const projectsCall = await fetch('https://jamestodd.dev/api/_v1/interface/projects')
-    // // const projectsCall = await fetch('http://localhost:3000/api/_v1/interface/projects')
-    // const projectsData = await projectsCall.json()
-
-    let projects = await Project.find()
-    let slugs = projects.map(project=> project.slug)
-    let paths = slugs.map(project=> ({params: {project: project}}))
+    // let projects = await Project.find()
+    // let slugs = projects.map(project=> project.slug)
+    // let paths = slugs.map(project=> ({params: {project: JSON.parse(JSON.stringify(project))}}))
  
-    return {paths, fallback: false}
+    // let paths = [{project: 'onlyfit'}, {project: 'moonshot'}, {project: 'jbank'}, ]
+
+    // return {paths, fallback: false}
+
+    return {projects: projectsData}
 }

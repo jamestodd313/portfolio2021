@@ -72,5 +72,6 @@ export default function index({projects}){
 
 export const getStaticProps = async()=>{
     const projects = await Project.find()
-    return {props: {projects: projects}}
+
+    return {props: {projects: JSON.parse(JSON.stringify(projects))}}
 }
