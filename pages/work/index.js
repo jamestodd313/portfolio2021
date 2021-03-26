@@ -69,12 +69,6 @@ export default function index({projects}){
     )
 }
 
-// index.getInitialProps = async(ctx)=> {
-//     const projectsCall = await fetch('https://jamestodd.dev/api/_v1/interface/projects')
-//     const projectsData = await projectsCall.json()
-//     return {projects: projectsData}
-// }
-
 export const getStaticProps = async()=>{
     const projectsCall = await fetch('https://jamestodd.dev/api/_v1/interface/projects')
     const projectsData = await projectsCall.json()

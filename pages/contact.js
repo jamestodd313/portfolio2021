@@ -104,12 +104,6 @@ export default function contact({pageData}){
     )
 }
 
-// contact.getInitialProps = async ctx=> {
-//     const pageCall = await fetch('https://jamestodd.dev/api/_v1/interface/pages/contact')
-//     const pageData = await pageCall.json()
-//     return {pageData: pageData[0]}
-// }
-
 export const getStaticProps = async()=> {
     const pageCall = await fetch('https://jamestodd.dev/api/_v1/interface/pages/contact')
     const pageData = await pageCall.json()
