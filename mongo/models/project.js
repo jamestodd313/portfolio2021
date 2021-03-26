@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
-const ProjectSchema = mongoose.Schema({
-    _id: mongoose.Types.ObjectId,
+const ProjectSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
     title: String,
     description: String,
     type: String,

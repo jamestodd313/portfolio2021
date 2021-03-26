@@ -126,17 +126,9 @@ export default function project ({project}){
 //     }
 // }
 
-project.getInitialProps = async(ctx)=> {
-    const projectsCall = await fetch(`https://jamestodd.dev/api/_v1/interface/projects/${ctx.query.slug}`)
-    const projectsData = await projectsCall.json()
 
-    // let projects = await Project.find()
-    // let slugs = projects.map(project=> project.slug)
-    // let paths = slugs.map(project=> ({params: {project: JSON.parse(JSON.stringify(project))}}))
- 
-    // let paths = [{project: 'onlyfit'}, {project: 'moonshot'}, {project: 'jbank'}, ]
-
-    // return {paths, fallback: false}
-
-    return {projects: projectsData}
+project.getInitialProps = async (ctx)=> {
+    const projectCall = await fetch(`https://jamestodd.dev/api/_v1/interface/projects/${ctx.query.project}`)
+    const projectData = await projectCall.json()
+    return {project: projectData}
 }
