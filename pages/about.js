@@ -152,7 +152,7 @@ export default function about({pageData}){
 //     return {pageData: pageData[0]}
 // }
 
-export const getServerSideProps = async ()=> {
+export const getStaticProps = async ()=> {
     const pageCall = await fetch('https://jamestodd.dev/api/_v1/interface/pages/about')
     let pageData = await pageCall.json()
 

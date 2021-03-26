@@ -110,7 +110,7 @@ export default function contact({pageData}){
 //     return {pageData: pageData[0]}
 // }
 
-export const getServerSideProps = async()=> {
+export const getStaticProps = async()=> {
     const pageCall = await fetch('https://jamestodd.dev/api/_v1/interface/pages/contact')
     const pageData = await pageCall.json()
     return {props: {pageData: pageData[0]}}

@@ -75,7 +75,7 @@ export default function index({projects}){
 //     return {projects: projectsData}
 // }
 
-export const getServerSideProps = async()=>{
+export const getStaticProps = async()=>{
     const projectsCall = await fetch('https://jamestodd.dev/api/_v1/interface/projects')
     const projectsData = await projectsCall.json()
     return {props: {projects: projectsData}}

@@ -121,7 +121,7 @@ export default function project ({project}){
 //     return {project: projectData}
 // }
 
-export const getServerSideProps = async(ctx)=> {
+export const getStaticProps = async(ctx)=> {
     const projectCall = await fetch(`https://jamestodd.dev/api/_v1/interface/projects/${ctx.query.project}`)
     const projectData = await projectCall.json()
     return {props: {project: projectData}}
