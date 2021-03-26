@@ -3,7 +3,8 @@ import {useRouter} from 'next/router'
 import {TweenMax} from 'gsap'
 import {useEffect, useState, useRef} from 'react'
 import {Navbar} from '../components/nav/Navbar'
-
+import dbConnect from '../mongo/dbConnect'
+dbConnect()
 
 export default function Home({pageData}) {
   let app, bar, james, todd, block1, block2, box, content, nav, watermark = useRef(null)
