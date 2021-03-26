@@ -8,6 +8,7 @@ import {TweenMax, gsap} from 'gsap'
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ImageSlider } from '../../components/projects/ImageSlider';
 
+import Project from '../../mongo/models/project'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -116,20 +117,27 @@ export default function project ({project}){
 }
 
 
-export const getServerSideProps = async(ctx)=> {
-    const projectCall = await fetch(`https://jamestodd.dev/api/_v1/interface/projects/${ctx.params.project}`)
-    // const projectCall = await fetch(`http://localhost:3000/api/_v1/interface/projects/${ctx.query.project}`)
-    const projectData = await projectCall.json()
-    return {props: {project: projectData}}
+export const getStaticProps = async(ctx)=> {
+    // const projectCall = await fetch(`https://jamestodd.dev/api/_v1/interface/projects/${ctx.params.project}`)
+    // // const projectCall = await fetch(`http://localhost:3000/api/_v1/interface/projects/${ctx.query.project}`)
+    // const projectData = await projectCall.json()
+
+    try{
+        const proj = await Project.find({slug: req.query.slug})
+        return {props: {project: proj[0]}}
+    }catch(e){
+        return res.status(500).json({error: e})
+    }
 }
 
-// export const getStaticPaths = async()=> {
-//     const projectsCall = await fetch('https://jamestodd.dev/api/_v1/interface/projects')
-//     // const projectsCall = await fetch('http://localhost:3000/api/_v1/interface/projects')
-//     const projectsData = await projectsCall.json()
+export const getStaticPaths = async()=> {
+    // const projectsCall = await fetch('https://jamestodd.dev/api/_v1/interface/projects')
+    // // const projectsCall = await fetch('http://localhost:3000/api/_v1/interface/projects')
+    // const projectsData = await projectsCall.json()
 
-//     let slugs = projectsData.map(project=> project.slug)
-//     let paths = slugs.map(project=> ({params: {project: project}}))
+    let projects = await Project.find()
+    let slugs = projects.map(project=> project.slug)
+    let paths = slugs.map(project=> ({params: {project: project}}))
  
-//     return {paths, fallback: false}
-// }
+    return {paths, fallback: false}
+}
