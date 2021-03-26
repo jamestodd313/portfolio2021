@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState, useRef } from "react";
 import { Navbar } from "../../components/nav/Navbar";
 import { ProjectImage } from '../../components/projects/ProjectImage';
+import Project from '../../mongo/models/project'
 export default function index({projects}){
    
     // ENTER ANIMATION
@@ -70,7 +71,10 @@ export default function index({projects}){
 }
 
 export const getServerSideProps = async()=>{
-    const projectsCall = await fetch('https://jamestodd.dev/api/_v1/interface/projects')
-    const projectsData = await projectsCall.json()
+    // const projectsCall = await fetch('https://jamestodd.dev/api/_v1/interface/projects')
+    // const projectsData = await projectsCall.json()
+    
+    const projects = await Project.find()
+    return res.status(200).json(projects)
     return {props: {projects: projectsData}}
 }
