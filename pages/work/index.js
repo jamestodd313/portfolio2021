@@ -5,6 +5,10 @@ import { useEffect, useState, useRef } from "react";
 import { Navbar } from "../../components/nav/Navbar";
 import { ProjectImage } from '../../components/projects/ProjectImage';
 
+import dbConnect from '../../mongo/dbConnect'
+import mongoose from 'mongoose'
+import Project from '../../mongo/models/project'
+
 export default function index({projects}){
    
     // ENTER ANIMATION
@@ -70,14 +74,8 @@ export default function index({projects}){
     )
 }
 
-// export const getStaticProps = async()=>{
-//     const projects = await Project.find()
-
-//     return {props: {projects: JSON.parse(JSON.stringify(projects))}}
-// }
-
-index.getInitialProps = async(ctx)=> {
-    const projectsCall = await fetch('https://jamestodd.dev/api/_v1/interface/projects')
-    const projectsData = await projectsCall.json()
-    return {projects: projectsData}
+export const getStaticProps = async ()=> {
+    if(mongoose.connection.readyState === 0) dbConnect()
+    const projects = await Project.find()
+    return {props: {projects: JSON.parse(JSON.stringify(projects))}}
 }

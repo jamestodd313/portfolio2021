@@ -8,11 +8,11 @@ import {TweenMax, gsap} from 'gsap'
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ImageSlider } from '../../components/projects/ImageSlider';
 
+import dbConnect from '../../mongo/dbConnect'
+import mongoose from 'mongoose'
 import Project from '../../mongo/models/project'
 
 gsap.registerPlugin(ScrollTrigger);
-
-
 
 export default function project ({project}){
     const router = useRouter()
@@ -117,18 +117,16 @@ export default function project ({project}){
 }
 
 
-// export const getStaticProps = async(ctx)=> {
-//     try{
-//         const proj = await Project.find({slug: ctx.params.slug})
-//         return {props: {project: proj[0]}}
-//     }catch(e){
-//         return res.status(500).json({error: e})
-//     }
-// }
+export const getStaticProps = async (ctx)=> {
+    if(mongoose.connection.readyState === 0) dbConnect()
+    const projects = await Project.find({slug: ctx.params.project})
+    const project = await projects[0]
+    return {props: {project: JSON.parse(JSON.stringify(project))}}
+}
 
-
-project.getInitialProps = async (ctx)=> {
-    const projectCall = await fetch(`https://jamestodd.dev/api/_v1/interface/projects/${ctx.query.project}`)
-    const projectData = await projectCall.json()
-    return {project: projectData}
+export const getStaticPaths = async()=> {
+    if(mongoose.connection.readyState === 0) dbConnect()
+    const projects = await Project.find()
+    const paths = await projects.map(proj=> ({params: {project: proj.slug}}))
+    return {paths, fallback: false}
 }

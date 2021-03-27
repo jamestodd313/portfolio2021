@@ -9,7 +9,8 @@ const ProjectSchema = new mongoose.Schema({
     demo: String,
     repo: String,
     coverImage: String,
-    mockupImage: String
+    mockupImage: String,
+    slug: String
 })
 
 
