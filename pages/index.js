@@ -98,7 +98,7 @@ export default function Home({pageData}) {
         <meta property="og:title" content="James Todd - Full Stack Developer" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://jamestodd.dev" />
-        <meta property="og:image" content="/ogimg.jpg"/>
+        <meta property="og:image" content="https://jamestodd.dev/ogimg.jpg"/>
       </Head>
       <div className="nav-wrap" ref={el=> nav = el}>
         <Navbar setClicked={setClicked}/>
