@@ -39,7 +39,6 @@ const App = ({ Component, pageProps }) => {
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Hairline&family=Lacquer&family=Montserrat&family=Staatliches&display=swap" rel="stylesheet"/>
-        <meta charset="UTF-8"/>
       </Head>
       <Component {...pageProps} />
     </>
