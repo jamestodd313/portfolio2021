@@ -29,7 +29,7 @@ export const Navbar = ({setClicked, light}) => {
                     <a className="logo" aria-label="home">james todd</a>
                 </Link>
                 <div className="button-container">
-                    <button className={open ? "menu-toggle open" : "menu-toggle"} onClick={e=> setOpen(!open)}>
+                    <button aria-haspopup="menu" aria-controls="main-navigation" aria-expanded={open} className={open ? "menu-toggle open" : "menu-toggle"} onClick={e=> setOpen(!open)}>
                         <svg className="burger" xmlns="http://www.w3.org/2000/svg" width="35.922" height="28.969" viewBox="0 0 35.922 28.969">
                             <g id="Icon_feather-menu" data-name="Icon feather-menu" transform="translate(-3 -7.5)">
                                 <path id="Path_4" data-name="Path 4" d="M4.5,18H37.422" transform="translate(0 3.984)" fill="none" stroke="#454545" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3"/>
@@ -39,10 +39,16 @@ export const Navbar = ({setClicked, light}) => {
                         </svg>
                     </button>
                 </div>
-                <nav className={open ? "open" : null}>
-                    <a href="/about" className={`nav-link ${activeLink === "about" ? 'active' : ''}`} data-id="about" onClick={e=> handleLink(e)}>about</a>
-                    <a href="/work" className={`nav-link ${activeLink === "work" ? 'active' : ''}`} data-id="work" onClick={e=> handleLink(e)}>work</a>
-                    <a href="/contact" className={`nav-link ${activeLink === "contact" ? 'active' : ''}`} data-id="contact" onClick={e=> handleLink(e)}>contact</a>
+                <nav id="main-navigation" className={open ? "open" : null}>
+                    <Link href="/about">
+                        <a className={`nav-link ${activeLink === "about" ? 'active' : ''}`} data-id="about" onClick={e=> handleLink(e)}>about</a>
+                    </Link>
+                    <Link href="/work">
+                        <a href="/work" className={`nav-link ${activeLink === "work" ? 'active' : ''}`} data-id="work" onClick={e=> handleLink(e)}>work</a>
+                    </Link>
+                    <Link href="/contact">
+                        <a href="/contact" className={`nav-link ${activeLink === "contact" ? 'active' : ''}`} data-id="contact" onClick={e=> handleLink(e)}>contact</a>
+                    </Link>
                 </nav>
             </header>
         </>

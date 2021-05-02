@@ -1,19 +1,21 @@
 .about-container{
     // pointer-events: none;
     position: relative;
-    height: 80vh;
+    height: 100%;
     width: calc(100vw - 64px);
     margin-left: 32px;
     background: $lightgrey;
+    overflow: unset;
     .about-inner{
         opacity: 0;
         height: 80vh;
     }
     .about-me{
         font-size: 12px;
-        position: absolute;
-        bottom: -16px;
+        position: relative;
+        top: 100%;
         left: 0;
+        padding: 4px;
     }
     .skill{
         transform: scale(1);
@@ -24,6 +26,7 @@
         display: grid;
         place-content: center;
         font-family: 'Bungee Hairline', sans-serif;
+        color: black;
         &.big{
             height: 16vw;
             width: 16vw;

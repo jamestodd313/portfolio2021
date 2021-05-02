@@ -8,15 +8,15 @@ import { ProjectImage } from '../../components/projects/ProjectImage';
 import dbConnect from '../../mongo/dbConnect'
 import mongoose from 'mongoose'
 import Project from '../../mongo/models/project'
+import { ExternalLinks } from '../../components/nav/ExternalLinks';
 
-export default function index({projects}){
-   
+export default function index({projects, links}){   
     // ENTER ANIMATION
     useEffect(()=>{
         let container = document.querySelectorAll('.projects-container')[0]
         const enterTl = gsap.timeline()
         enterTl
-            .from(container, {width: 0, ease: "back", duration: 0.8})
+            .from(container, {width: 0, ease: "bounce", duration: 0.8})
     },[])
 
     // OPEN PROJECT ANIMATION
@@ -38,6 +38,7 @@ export default function index({projects}){
             .to(selectedProject, {top: 0, left:0, duration: 0.3, minWidth: "100vw", height: "80vh", objectFit: "cover", objectPosition: "center"})
             .to(selectedProject.firstChild, {width: "100vw"})
             .add(()=>{ 
+                selectedProject.blur()
                 selectedProject.onClick = null
                 selectedProject.classList.add('expanded')
             })
@@ -70,6 +71,7 @@ export default function index({projects}){
         <div className="projects-container">
             {projects.map(proj=> <ProjectImage key={proj._id} project={proj} setSelectedProject={setSelectedProject}/>)}
         </div>
+        {links && <ExternalLinks links={links}/>}
         </>
     )
 }
@@ -77,5 +79,9 @@ export default function index({projects}){
 export const getStaticProps = async ()=> {
     if(mongoose.connection.readyState === 0) dbConnect()
     const projects = await Project.find()
-    return {props: {projects: JSON.parse(JSON.stringify(projects))}}
+
+    const pageCall = await fetch('https://jamestodd.dev/api/_v1/interface/pages/contact')
+    const pageData = await pageCall.json()
+    
+    return {props: {projects: JSON.parse(JSON.stringify(projects)), links: pageData[0].links}}
 }
