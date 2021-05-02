@@ -4,6 +4,7 @@ import { Navbar } from "../components/nav/Navbar";
 import { gsap } from 'gsap';
 import emailjs from 'emailjs-com'
 import Head from 'next/head';
+import { ExternalLinks } from '../components/nav/ExternalLinks';
 export default function contact({pageData}){
     const router = useRouter()
     const [clicked, setClicked] = useState(undefined)
@@ -94,12 +95,7 @@ export default function contact({pageData}){
                     </div>
                 </form>
             </div>
-           
-            <section className="links">
-                {pageData.links.map(link=>{
-                    return <a key={link.name} href={link.url} target="_blank" className="big-link reverse">{link.name}</a>
-                })}
-            </section>
+            <ExternalLinks links={pageData.links}/>
         </>
     )
 }

@@ -29,9 +29,9 @@ export default function about({pageData}){
     useEffect(()=>{
         let enterTl = gsap.timeline()
         enterTl
-            .from(container, {width: "0px", duration: 0.8, ease: "back"})
+            .from(container, {width: "0px", duration: 0.8, ease: "back.out(1.7)"})
             .to(content, {opacity: "1", duration: 0.2, delay: "-0.3"})
-            .from(circles, {scale: 0, bottom: 0, duration: 0.5, delay: "-0.2", stagger: 0.1, ease: "back"})
+            .from(circles, {scale: 0, bottom: 0, duration: 0.5, delay: "-0.3", stagger: 0.05, ease: "back.out(1)"})
     },[])
 
     //  CIRCLE FLOAT ANIMATION

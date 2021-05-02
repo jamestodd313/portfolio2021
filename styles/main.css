@@ -56,6 +56,7 @@ html, body {
   overflow-x: hidden;
   width: 100vw;
   min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 * {
@@ -594,10 +595,11 @@ header nav .nav-link::before {
 
 .about-container {
   position: relative;
-  height: 80vh;
+  height: 100%;
   width: calc(100vw - 64px);
   margin-left: 32px;
   background: #D6D6D6;
+  overflow: unset;
 }
 
 .about-container .about-inner {
@@ -607,9 +609,10 @@ header nav .nav-link::before {
 
 .about-container .about-me {
   font-size: 12px;
-  position: absolute;
-  bottom: -16px;
+  position: relative;
+  top: 100%;
   left: 0;
+  padding: 4px;
 }
 
 .about-container .skill {
@@ -623,6 +626,7 @@ header nav .nav-link::before {
   display: grid;
   place-content: center;
   font-family: 'Bungee Hairline', sans-serif;
+  color: black;
 }
 
 .about-container .skill.big {
