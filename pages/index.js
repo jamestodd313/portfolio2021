@@ -21,30 +21,29 @@ export default function Home({pageData}) {
   //=======================================================
   // ENTER ANIMATION
   useEffect(()=>{
+    if(!app) return
     //  MAKE APP VISIBLE
     TweenMax.to(app, 0, {css: {visibility: 'visible'}})
     //  JAMES TODD TEXT COMES IN
     TweenMax.to(james, 0.5, {css: {translateY: "-90%"}}).delay(0)
     TweenMax.to(todd, 0.5, {css: {translateY: "90%"}}).delay(0)
     //  BLOCKS DISAPPEAR
-    TweenMax.from(block1, {css: {visibility: 'visible', display: "block"}}).delay(0)
-    TweenMax.from(block2, {css: {visibility: 'visible', display: "block"}}).delay(0)
+    TweenMax.from(block1, {css: {visibility: 'visible', display: "block"}}).delay(0.5)
+    TweenMax.from(block2, {css: {visibility: 'visible', display: "block"}}).delay(0.5)
     // JAMES TODD TEXT LEAVES
-    TweenMax.to(james, 0.3, {css: {color: "transparent", webkitTextStroke: "1px black"}}).delay(1)
-    TweenMax.to(todd, 0.3, {css: {color: "transparent", webkitTextStroke: "1px black"}}).delay(1)
-    TweenMax.to(james, 0.5, {css: {translateX: "150vw"}}).delay(1.3)
-    TweenMax.to(todd, 0.5, {css: {translateX: "-150vw"}}).delay(1.3)
-
-
-  // PAGE BOX COMES IN
-    TweenMax.from(box, 0.6, {css: {height: "1px", marginTop: "50vh"}}).delay(1.5)
-    TweenMax.to(box, 1, {css: {visibility: "visible"}}).delay(1.5)
-  // MENU SLIDES UP
+    TweenMax.to(james, 0.3, {css: {color: "transparent", webkitTextStroke: "1px black"}}).delay(1.15)
+    TweenMax.to(todd, 0.3, {css: {color: "transparent", webkitTextStroke: "1px black"}}).delay(1.15)
+    TweenMax.to(james, 0.5, {css: {translateX: "150vw"}}).delay(1.35)
+    TweenMax.to(todd, 0.5, {css: {translateX: "-150vw"}}).delay(1.35)
+    // CIRCLE TEXT COMES IN
+    TweenMax.to(content, 0.5, {css: {visibility: "visible", opacity: 1}}).delay(1.3)
+    TweenMax.from(content, 0.5, {css: {scale: 0.1}}).delay(1.3)
+    // MENU SLIDES UP
     TweenMax.to(nav, 0.75, {css: {visibility: "visible", translateY: "0", zIndex: "0"}}).delay(1.4)
     if(window.innerWidth > 992) TweenMax.from(watermark, 0.75, {css: {left: "100px", opacity: "0"}}).delay(1.4)
-  // CIRCLE TEXT COMES IN
-    TweenMax.to(content, 0.5, {css: {visibility: "visible", opacity: 1}}).delay(1.6)
-    TweenMax.from(content, 0.5, {css: {scale: 0.1}}).delay(1.6)
+    // PAGE BOX COMES IN
+    TweenMax.from(box, 0.6, {css: {height: "1px", marginTop: "50vh"}}).delay(1.5)
+    TweenMax.to(box, 1, {css: {visibility: "visible"}}).delay(1.5)
   },[app])
 
 
@@ -54,9 +53,8 @@ export default function Home({pageData}) {
   useEffect(()=>{
     if(!clicked) return
     //play exit animation
-    // TweenMax.to(nav, 0.25, {css: {translateY: "100px", opacity: "0"}})
-    TweenMax.to(content, 0.6, {css: {scale: "10", ease: "back"}},)
-    TweenMax.to(watermark, 0.25, {css: {translateX: "100px", opacity: "0"}})
+    TweenMax.to(content, 0.3, {css: {scale: "10", ease: "back"}},)
+    TweenMax.to(watermark, 0.2, {css: {translateX: "100px", opacity: "0"}})
     TweenMax.to(box, 0.25, {css: {height: "0px"}}).delay(0.25)
     //send browser to clicked link
     setTimeout(()=>{
@@ -70,17 +68,20 @@ export default function Home({pageData}) {
   // CIRCLE TEXT STUFF 
   const [letters, setLetters] = useState([])
   useEffect(()=>{
+    if(!pageData.circleText) return
     setLetters(pageData.circleText.split(""))
-  },[])
+  },[pageData])
   useEffect(()=>{
+    if(!letters) return
     const lets = document.querySelectorAll('.circle-letter')
     let degreesToRotate = 360 / lets.length
     let i = 0
     lets.forEach(letter=>{
-      letter.style.transform = `rotate(${i}deg)`
+      TweenMax.to(letter, 1.5, {css: {rotate: `${i}deg`}}).delay(i / 149)
       i = i + degreesToRotate
     })
   },[letters])
+
 
 
 
