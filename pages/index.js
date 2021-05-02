@@ -5,7 +5,7 @@ import {useEffect, useState, useRef} from 'react'
 import {Navbar} from '../components/nav/Navbar'
 
 export default function Home({pageData}) {
-  let app, bar, james, todd, block1, block2, box, content, nav, watermark = useRef(null)
+  let app, james, todd, block1, block2, box, content, nav, watermark = useRef(null)
   const router = useRouter()
   //=======================================================
   // INTRO TEXT
@@ -21,7 +21,6 @@ export default function Home({pageData}) {
   //=======================================================
   // ENTER ANIMATION
   useEffect(()=>{
-    let marg = window.innerWidth > 992 ? "280px" : "64px"
     //  MAKE APP VISIBLE
     TweenMax.to(app, 0, {css: {visibility: 'visible'}})
     //  JAMES TODD TEXT COMES IN
@@ -42,7 +41,7 @@ export default function Home({pageData}) {
     TweenMax.to(box, 1, {css: {visibility: "visible"}}).delay(1.5)
   // MENU SLIDES UP
     TweenMax.to(nav, 0.75, {css: {visibility: "visible", translateY: "0", zIndex: "0"}}).delay(1.4)
-    if(window.innerWidth > 768) TweenMax.from(watermark, 0.75, {css: {left: "100px", opacity: "0"}}).delay(1.4)
+    if(window.innerWidth > 992) TweenMax.from(watermark, 0.75, {css: {left: "100px", opacity: "0"}}).delay(1.4)
   // CIRCLE TEXT COMES IN
     TweenMax.to(content, 0.5, {css: {visibility: "visible", opacity: 1}}).delay(1.6)
     TweenMax.from(content, 0.5, {css: {scale: 0.1}}).delay(1.6)
