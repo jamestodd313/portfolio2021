@@ -3,8 +3,6 @@ import {useRouter} from 'next/router'
 import {TweenMax} from 'gsap'
 import {useEffect, useState, useRef} from 'react'
 import {Navbar} from '../components/nav/Navbar'
-// import dbConnect from '../mongo/dbConnect'
-// dbConnect()
 
 export default function Home({pageData}) {
   let app, bar, james, todd, block1, block2, box, content, nav, watermark = useRef(null)
@@ -26,31 +24,28 @@ export default function Home({pageData}) {
     let marg = window.innerWidth > 992 ? "280px" : "64px"
     //  MAKE APP VISIBLE
     TweenMax.to(app, 0, {css: {visibility: 'visible'}})
-    //  LOADING BAR GROW
-    TweenMax.to(bar, 0.75, {css: {width: `calc(100vw - ${marg})`}})
     //  JAMES TODD TEXT COMES IN
-    TweenMax.to(james, 0.5, {css: {translateY: "-90%"}}).delay(0.85)
-    TweenMax.to(todd, 0.5, {css: {translateY: "90%"}}).delay(0.85)
+    TweenMax.to(james, 0.5, {css: {translateY: "-90%"}}).delay(0)
+    TweenMax.to(todd, 0.5, {css: {translateY: "90%"}}).delay(0)
     //  BLOCKS DISAPPEAR
-    TweenMax.from(block1, {css: {visibility: 'visible', display: "block"}}).delay(0.85)
-    TweenMax.from(block2, {css: {visibility: 'visible', display: "block"}}).delay(0.85)
-    // BAR DISAPPEARS
-    TweenMax.to(bar, 0.25, {css: {opacity: "0"}}).delay(0.85)
+    TweenMax.from(block1, {css: {visibility: 'visible', display: "block"}}).delay(0)
+    TweenMax.from(block2, {css: {visibility: 'visible', display: "block"}}).delay(0)
     // JAMES TODD TEXT LEAVES
-    TweenMax.to(james, 0.3, {css: {color: "transparent", webkitTextStroke: "1px black"}}).delay(2)
-    TweenMax.to(todd, 0.3, {css: {color: "transparent", webkitTextStroke: "1px black"}}).delay(2)
-    TweenMax.to(james, 0.5, {css: {translateX: "150vw"}}).delay(2.3)
-    TweenMax.to(todd, 0.5, {css: {translateX: "-150vw"}}).delay(2.3)
+    TweenMax.to(james, 0.3, {css: {color: "transparent", webkitTextStroke: "1px black"}}).delay(1)
+    TweenMax.to(todd, 0.3, {css: {color: "transparent", webkitTextStroke: "1px black"}}).delay(1)
+    TweenMax.to(james, 0.5, {css: {translateX: "150vw"}}).delay(1.3)
+    TweenMax.to(todd, 0.5, {css: {translateX: "-150vw"}}).delay(1.3)
 
 
   // PAGE BOX COMES IN
-    TweenMax.from(box, 0.6, {css: {height: "1px", marginTop: "50vh"}}).delay(2.5)
-    TweenMax.to(box, 1, {css: {visibility: "visible"}}).delay(2.5)
+    TweenMax.from(box, 0.6, {css: {height: "1px", marginTop: "50vh"}}).delay(1.5)
+    TweenMax.to(box, 1, {css: {visibility: "visible"}}).delay(1.5)
   // MENU SLIDES UP
-    TweenMax.to(nav, 0.75, {css: {visibility: "visible", translateY: "0", zIndex: "0"}}).delay(2.6)
-    TweenMax.from(watermark, 0.75, {css: {left: "100px", opacity: "0"}}).delay(2.6)
+    TweenMax.to(nav, 0.75, {css: {visibility: "visible", translateY: "0", zIndex: "0"}}).delay(1.4)
+    if(window.innerWidth > 768) TweenMax.from(watermark, 0.75, {css: {left: "100px", opacity: "0"}}).delay(1.4)
   // CIRCLE TEXT COMES IN
-    TweenMax.to(content, 0.5, {css: {visibility: "visible", opacity: 1}}).delay(3.6)
+    TweenMax.to(content, 0.5, {css: {visibility: "visible", opacity: 1}}).delay(1.6)
+    TweenMax.from(content, 0.5, {css: {scale: 0.1}}).delay(1.6)
   },[app])
 
 
@@ -76,7 +71,6 @@ export default function Home({pageData}) {
   // CIRCLE TEXT STUFF 
   const [letters, setLetters] = useState([])
   useEffect(()=>{
-    // let str = "james todd•minneapolis•full stack web developer•mern•gsap•i need a job•"
     setLetters(pageData.circleText.split(""))
   },[])
   useEffect(()=>{
@@ -105,7 +99,6 @@ export default function Home({pageData}) {
       </div>
 
       {/* intro animation stuff */}
-      <div className="loader" ref={el=> bar = el}/>
       <div className="block1" ref={el=>block1 = el}/>
       <span className="load-txt" aria-hidden="true" ref={el=> james = el}>{firstTxt}</span>
       <span className="load-txt" aria-hidden="true" ref={el=> todd = el}>{lastTxt}</span>
